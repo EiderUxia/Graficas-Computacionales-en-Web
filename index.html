@@ -32,13 +32,25 @@
 	
 </head>
 <body>
+
 	<div id="contenedor">
 
+		<h1 id="Titulo">Busqueda Miaucable</h1>
 		<div id="Bienvenido">
 			<p>Bienvenido</p>
 			<p>Por favor inserta tu nombre:</p>
 			<input id="txtName" type="text" placeholder="Nombre">
 			<button id="btnEnviar">Enviar</button>
+		</div>
+
+		<div id="Dificultad">
+			<label>Seleccione dificultad</label>
+			<div id="SelecNormal">
+				<p>Normiau</p>
+			</div>
+			<div id="SelecDificil">
+				<p >Difimiau</p>
+			</div>			
 		</div>
 
 		<div id="Cargando">
@@ -47,34 +59,37 @@
 		</div>
 
 	</div>
-	<div id="contCanvas">
-		<div id="tabla">
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>     
-      <th class="titulo" scope="col">Nombres</th>
-      <th class="titulo" scope="col">Encontrados</th>
-      <th class="titulo" scope="col">Escena</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>      
-      <td class="titulo">Mark</td>
-      <td class="titulo">5/10</td>
-      <td class="titulo">2</td>
-    </tr>
-    <tr>      
-      <td class="titulo">Jacob</td>
-      <td class="titulo">6/15</td>
-      <td class="titulo">3</td>
-    </tr>
 
-  </tbody>
-</table>
+	<div id="contCanvas">
+		<div id="config"></div>
+		<div id="tabla">
+				<table class="table table-striped table-dark">
+				  <thead>
+				    <tr>     
+				      <th class="titulo" scope="col">Nombres</th>
+				      <th class="titulo" scope="col">Encontrados</th>
+				      <th class="titulo" scope="col">Escena</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>      
+				      <td class="titulo">Mark</td>
+				      <td class="titulo">5/10</td>
+				      <td class="titulo">2</td>
+				    </tr>
+				    <tr>      
+				      <td class="titulo">Jacob</td>
+				      <td class="titulo">6/15</td>
+				      <td class="titulo">3</td>
+				    </tr>
+
+				  </tbody>
+				</table>
 		</div>
 		<canvas id="c"></canvas>
+
 	</div>
-	
+
   
 </body>
 </html>

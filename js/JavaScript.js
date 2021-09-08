@@ -4,11 +4,13 @@ $(document).ready(function () {
         var Cargando = document.getElementById("Cargando");
         var Contenedor = document.getElementById("contenedor");
         var Canvas = document.getElementById("contCanvas");
+        var Iconos = document.getElementById("config");
         Bienvenido.style.visibility = "visible";
-
+        var NombreSave;
         $("#btnEnviar").click(function(){
                 var nombre = document.getElementById("txtName").value;
                 if(nombre!="") {
+                        /*
                         $("#Saludo").text("Hola " + nombre);
                         setTimeout(function(){
                                 Bienvenido.style.visibility = "hidden";
@@ -22,11 +24,50 @@ $(document).ready(function () {
                                 Canvas.style.visibility = "visible";
                                 Canvas.style.opacity = 1;
                         }, 2000);
-
-                                
+                        */
+                        Bienvenido.style.visibility = "hidden";
+                        Bienvenido.style.opacity = 0;
+                        Dificultad.style.visibility = "visible";
+                        Dificultad.style.opacity = 1;
+                        NombreSave = nombre;
                 }
                 else{
                         alert("Por favor escriba su nombre");
                 }
+        });
+
+
+        $("#SelecNormal").click(function(){                
+                setTimeout(function(){
+                        $("#Saludo").text("Hola " + NombreSave);
+                        Dificultad.style.visibility = "hidden";
+                        Dificultad.style.opacity = 0;
+                        Cargando.style.visibility = "visible";
+                        Cargando.style.opacity = 1;
+                }, 500);
+                setTimeout(function(){
+                        Contenedor.style.visibility = "hidden";
+                        Contenedor.style.opacity = 0;
+                        Canvas.style.visibility = "visible";
+                        Canvas.style.opacity = 1;
+                }, 2000);
+        });
+        $("#SelecDificil").click(function(){                
+                setTimeout(function(){
+                        $("#Saludo").text("Hola " + NombreSave);
+                        Dificultad.style.visibility = "hidden";
+                        Dificultad.style.opacity = 0;
+                        Cargando.style.visibility = "visible";
+                        Cargando.style.opacity = 1;
+                }, 500);
+                setTimeout(function(){
+                        Contenedor.style.visibility = "hidden";
+                        Contenedor.style.opacity = 0;
+                        Iconos.style.visibility = "visible";
+                        Iconos.style.opacity = 1;
+                        Canvas.style.visibility = "visible";
+                        Canvas.style.opacity = 1;
+
+                }, 2000);
         });
 });

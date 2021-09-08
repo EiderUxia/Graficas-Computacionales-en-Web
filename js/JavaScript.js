@@ -5,6 +5,10 @@ $(document).ready(function () {
         var Contenedor = document.getElementById("contenedor");
         var Canvas = document.getElementById("contCanvas");
         var Iconos = document.getElementById("config");
+        var Musica = document.getElementById("Musica");
+        var Sonido = document.getElementById("Sonido");
+        let modal1 = document.getElementById("modal-1");
+
         Bienvenido.style.visibility = "visible";
         var NombreSave;
         $("#btnEnviar").click(function(){
@@ -69,5 +73,20 @@ $(document).ready(function () {
                         Canvas.style.opacity = 1;
 
                 }, 2000);
+        });
+
+
+        $("#config ").click(function(){                
+                setTimeout(function(){
+                        modal1.style.visibility = "visible";
+                        modal1.style.opacity = 1;
+                }, 500);
+        });
+
+        $("#configuracion").click(function(){                
+                setTimeout(function(){
+                        modal1.style.visibility = "hidden";
+                        modal1.style.opacity = 0;
+                }, 500);
         });
 });

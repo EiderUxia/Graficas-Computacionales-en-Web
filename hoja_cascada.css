@@ -71,7 +71,6 @@ body{
 	transition: .5s;
 }
 
-
 #txtName{
 	width: 100%;
 	font-size: 1.1vw;
@@ -98,8 +97,6 @@ body{
   	grid-row-end: 2;
   	margin-top: 10vh;
 }
-
-
 
 #SelecDificil, #SelecNormal{
 	margin-top: 1vw;
@@ -237,4 +234,13 @@ body{
 #Musica, #Sonido{
 	text-decoration:none;
 	cursor: pointer;
+}
+
+th{
+	background: rgb(248, 211, 78);
+	color: black;
+}
+
+td{
+	background: rgb(91, 78, 85);
 }

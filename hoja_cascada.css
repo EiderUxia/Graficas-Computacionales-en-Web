@@ -183,7 +183,7 @@ body{
 	width: 50vw;
 	height: 30vw;
 	z-index: 600;
-	background-color: rgb(219, 182, 16);
+	background: rgb(91, 78, 85);
 	justify-content: center;
 	position: relative;
 	cursor: pointer;

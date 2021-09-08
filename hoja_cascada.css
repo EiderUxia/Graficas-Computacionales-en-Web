@@ -144,3 +144,63 @@ body{
 	background: url("Imagenes/Logo_de_configuracion.png");
 	background-size: cover;
 }
+
+/*******************************************************************************************/
+#modal-1{
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	z-index: 500;
+	width: 100vw;
+	height: 100vh;
+	top:0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: .5s;
+	
+}
+
+#configuracion{
+	width: 50vw;
+	height: 30vw;
+	z-index: 600;
+	background-color: rgb(219, 182, 16);
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+	border-radius: 15px;
+	border: solid 1.5px;
+}
+
+.contenedorConf{
+	height: max-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10%;
+}
+
+#IcMusic{
+	background: url("Imagenes/Logo_de_musica.png");
+	background-size: cover;
+	width: 5vw;
+	height: 5vw;
+	margin-right: 5%;
+}
+
+#IcSonido{
+	background: url("Imagenes/Logo_de_sonido.png");
+	background-size: cover;
+	width: 5vw;
+	height: 5vw;
+	margin-right: 5%;
+}
+
+#Musica, #Sonido{
+	text-decoration:none;
+	cursor: pointer;
+}

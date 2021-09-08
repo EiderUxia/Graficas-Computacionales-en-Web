@@ -17,6 +17,7 @@ body{
 	color: rgb(255, 255, 255);
 	text-shadow: 0 0 30px #ff8800;
 }
+
 #Logo{
 	width: max-content;
 	height: max-content;
@@ -76,12 +77,18 @@ body{
 	font-size: 1.1vw;
 	font-weight:bolder;
 	text-align: center;
-	
+	background: rgb(255, 233, 157);
+	color: black;
+	border: none;
+	outline: 0px;
+	border-radius: 10px;
 }
 
 #btnEnviar{
 	margin-top: 1.5vh;
 	font-size: 1vw;
+	background: rgb(255, 233, 157);
+	border-radius: 10px;
 }
 
 #Titulo{
@@ -95,15 +102,26 @@ body{
 
 
 #SelecDificil, #SelecNormal{
+	margin-top: 1vw;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 1vw;
+	padding-top: 2vw;
+	padding-bottom: 1vw;
+	padding-left: 3vw;
+	padding-right: 3vw;
 	cursor: pointer;
 	width: max-content;
 	height: max-content;
+
+	font-size: 2vw;
+}
+#SelecNormal{
 	background: url("Imagenes/Graficas_WEB_Menus_3.png");
 	background-size: cover;
-	margin-top: 1vw;
+}
+#SelecDificil{
+	background: url("Imagenes/Graficas_WEB_Menus_4.png");
+	background-size: cover;
 }
 
 /*---------------------------------------------------*/

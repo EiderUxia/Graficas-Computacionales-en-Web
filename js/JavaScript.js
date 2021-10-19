@@ -22,9 +22,14 @@ $(document).ready(function () {
                                 Dificultad.style.opacity = 1;
                                 NombreSave = nombre;
                                 NombreSave2 = nombre2;
-                                var TBName01 = document.getElementById("Name01");
-                                var TBName02 = document.getElementById("Name02");
-                                TBName01.text= NombreSave;
+                                players[0].name = NombreSave;
+                                players[1].name = NombreSave2;
+
+                                players[0].encontrados = 0;
+                                players[1].encontrados = 1;
+
+                                players[0].escena = 1;
+                                players[1].escena = 0;
                         } else {
                                 alert("Falta nombre del jugador 2");
                         }
@@ -212,6 +217,17 @@ function render() {
 
 
         if (cargado == true) {
+                $("#tablita tr").remove(); 
+                var fila = "<tr><td class='titulo' >" + players[0].name + "</td><td class='titulo'>" + players[0].encontrados + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
+                var btn = document.createElement("TR");
+                btn.innerHTML = fila;
+                var fila2 = "<tr><td class='titulo' >" + players[1].name + "</td><td class='titulo'>" + players[1].encontrados + "</td><td class='titulo'>" + players[1].escena + "</td></tr>";
+                var btn2 = document.createElement("TR");
+                btn2.innerHTML = fila2;
+                document.getElementById("tablita").appendChild(btn);
+                document.getElementById("tablita").appendChild(btn2);
+
+
                 //Player 1
                 if (keys["A"]) {
                         players[0].yaw = 5;

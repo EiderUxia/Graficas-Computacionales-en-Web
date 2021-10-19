@@ -7,7 +7,7 @@ $(document).ready(function () {
         var Musica = document.getElementById("Musica");
         var Sonido = document.getElementById("Sonido");
         let modal1 = document.getElementById("modal-1");
-
+        cargado = false;
         Bienvenido.style.visibility = "visible";
         var NombreSave;
         var NombreSave2;
@@ -22,6 +22,9 @@ $(document).ready(function () {
                                 Dificultad.style.opacity = 1;
                                 NombreSave = nombre;
                                 NombreSave2 = nombre2;
+                                var TBName01 = document.getElementById("Name01");
+                                var TBName02 = document.getElementById("Name02");
+                                TBName01.text= NombreSave;
                         } else {
                                 alert("Falta nombre del jugador 2");
                         }
@@ -43,6 +46,7 @@ $(document).ready(function () {
                         Contenedor.style.opacity = 0;
                         Canvas.style.visibility = "visible";
                         Canvas.style.opacity = 1;
+                        cargado = true;
                 }, 2000);
         });
         $("#SelecDificil").click(function () {
@@ -60,6 +64,7 @@ $(document).ready(function () {
                         Iconos.style.opacity = 1;
                         Canvas.style.visibility = "visible";
                         Canvas.style.opacity = 1;
+                        cargado = true;
                 }, 2000);
         });
 
@@ -76,4 +81,172 @@ $(document).ready(function () {
                         modal1.style.opacity = 0;
                 }, 500);
         });
+
+
+
+        /***** THREEJS****/
+        setupScene();
+        document.addEventListener("keydown", onKeyDown);
+        document.addEventListener("keyup", onKeyUp);
+
+        render();
 });
+
+var cargado;
+var scene;
+var camera;
+var renderer;
+var controls;
+var clock;
+var deltaTime;
+var keys = {};
+//Arreglos
+var renderers = [];
+var cameras = [];
+var players = [];
+//Global para su uso en otras funciones
+var visibleSize = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+};
+
+//var objects = [];
+//var cube;
+
+
+function onKeyDown(event) {
+        keys[String.fromCharCode(event.keyCode)] = true;
+}
+function onKeyUp(event) {
+        keys[String.fromCharCode(event.keyCode)] = false;
+}
+
+function setupScene() {
+        clock = new THREE.Clock();
+        scene = new THREE.Scene();
+
+        createCamera();
+        createCamera();
+
+        createRenderer(new THREE.Color(0, 0, 0));
+        createRenderer(new THREE.Color(0.2, 0.2, 0.2));
+
+        var ambientLight = new THREE.AmbientLight(
+                new THREE.Color(1, 1, 1),
+                1.0
+        );
+        scene.add(ambientLight);
+
+        var directionalLight = new THREE.DirectionalLight(
+                new THREE.Color(1, 1, 0),
+                0.4
+        );
+        directionalLight.position.set(0, 0, 1);
+        scene.add(directionalLight);
+
+        var grid = new THREE.GridHelper(50, 10, 0xffffff, 0xffffff);
+        grid.position.y = -1;
+        scene.add(grid);
+
+        var material = new THREE.MeshLambertMaterial({
+                color: new THREE.Color(0.5, 0.0, 0.0),
+        });
+        var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+        var player1 = new THREE.Mesh(geometry, material);
+        player1.position.x = 1;
+
+        var player2 = player1.clone();
+        player2.material = new THREE.MeshLambertMaterial({
+                color: new THREE.Color(0.5, 0.5, 0.0),
+        });
+        player2.position.x = -1;
+
+        scene.add(player1);
+        scene.add(player2);
+
+        players.push(player1);
+        players.push(player2);
+
+        player1.yaw = 0;
+        player1.forward = 0;
+
+        player2.yaw = 0;
+        player2.forward = 0;
+
+        player1.add(cameras[0]);
+        player2.add(cameras[1]);
+
+        $("#scene-section").append(renderers[0].domElement);
+        $("#scene-section-2").append(renderers[1].domElement);
+}
+
+function createCamera() {
+        var camera = new THREE.PerspectiveCamera(
+                75,
+                visibleSize.width / visibleSize.height,
+                0.1,
+                100
+        );
+        cameras.push(camera);
+}
+
+function createRenderer(color) {
+        var renderer = new THREE.WebGLRenderer({ precision: "mediump" });
+        renderer.setClearColor(color);
+        renderer.setPixelRatio(visibleSize.width / 2 / visibleSize.height);
+        renderer.setSize(visibleSize.width / 2, visibleSize.height);
+        renderers.push(renderer);
+}
+
+
+function render() {
+        requestAnimationFrame(render);
+        deltaTime = clock.getDelta();
+
+        //Reiniciar variables
+        for (var i = 0; i < players.length; i++) {
+                players[i].yaw = 0;
+                players[i].forward = 0;
+        }
+
+
+        if (cargado == true) {
+                //Player 1
+                if (keys["A"]) {
+                        players[0].yaw = 5;
+                } else if (keys["D"]) {
+                        players[0].yaw = -5;
+                }
+                if (keys["W"]) {
+                        players[0].forward = -5;
+                } else if (keys["S"]) {
+                        players[0].forward = 5;
+                }
+
+
+                //Player 2
+                if (keys["%"]) {
+                        players[1].yaw = 5;
+                } else if (keys["'"]) {
+                        players[1].yaw = -5;
+                }
+                if (keys["&"]) {
+                        players[1].forward = -5;
+                } else if (keys["("]) {
+                        players[1].forward = 5;
+                }
+        }
+
+
+
+        //Crear la rotacion y mivimiento de los jugadores
+        for (var i = 0; i < players.length; i++) {
+                players[i].rotation.y += players[i].yaw * deltaTime;
+                players[i].translateZ(players[i].forward * deltaTime);
+        }
+
+        renderers[0].render(scene, cameras[0]);
+        renderers[1].render(scene, cameras[1]);
+}
+

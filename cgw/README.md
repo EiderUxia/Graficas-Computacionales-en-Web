@@ -1,1 +1,0 @@
-Graficas Computacionales en Web

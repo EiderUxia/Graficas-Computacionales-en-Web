@@ -115,9 +115,6 @@ var visibleSize = {
         height: window.innerHeight,
 };
 
-//var objects = [];
-//var cube;
-
 
 function onKeyDown(event) {
         keys[String.fromCharCode(event.keyCode)] = true;

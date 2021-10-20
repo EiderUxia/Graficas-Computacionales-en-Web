@@ -1,3 +1,26 @@
+var cargado;
+var scene;
+var camera;
+var renderer;
+var controls;
+var clock;
+var deltaTime;
+var keys = {};
+var Canvas1 = document.getElementById("scene-section");
+var Canvas2 = document.getElementById("scene-section-2");
+//Arreglos
+var renderers = [];
+var cameras = [];
+var players = [];
+var NombreSave;
+var NombreSave2;
+//Global para su uso en otras funciones
+var visibleSize = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+};
+
+
 $(document).ready(function () {
         var Bienvenido = document.getElementById("Bienvenido");
         var Cargando = document.getElementById("Cargando");
@@ -9,8 +32,7 @@ $(document).ready(function () {
         let modal1 = document.getElementById("modal-1");
         cargado = false;
         Bienvenido.style.visibility = "visible";
-        var NombreSave;
-        var NombreSave2;
+
 
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
@@ -23,14 +45,7 @@ $(document).ready(function () {
                                 Dificultad.style.opacity = 1;
                                 NombreSave = nombre;
                                 NombreSave2 = nombre2;
-                                players[0].name = NombreSave;
-                                players[1].name = NombreSave2;
 
-                                players[0].encontrados = 0;
-                                players[1].encontrados = 1;
-
-                                players[0].escena = 1;
-                                players[1].escena = 0;
                         } else {
                                 alert("Falta nombre del jugador 2");
                         }
@@ -39,39 +54,45 @@ $(document).ready(function () {
                 }
         });
 
-        $("#SelecNormal").click(function () {
-                setTimeout(function () {
+        $("#SelecNormal").click( async function () {
+
+                await setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
                         Cargando.style.opacity = 1;
                 }, 500);
-                setTimeout(function () {
+                cargar();
+
+               await setTimeout(function () {
                         Contenedor.style.visibility = "hidden";
                         Contenedor.style.opacity = 0;
                         Canvas.style.visibility = "visible";
                         Canvas.style.opacity = 1;
                         cargado = true;
                 }, 2000);
+
         });
-        $("#SelecDificil").click(function () {
-                setTimeout(function () {
+        $("#SelecDificil").click(async function () {
+
+                await setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
                         Cargando.style.opacity = 1;
                 }, 500);
-                setTimeout(function () {
+                cargar();
+
+               await setTimeout(function () {
                         Contenedor.style.visibility = "hidden";
                         Contenedor.style.opacity = 0;
-                        Iconos.style.visibility = "visible";
-                        Iconos.style.opacity = 1;
                         Canvas.style.visibility = "visible";
                         Canvas.style.opacity = 1;
                         cargado = true;
                 }, 2000);
+
         });
 
         $("#config ").click(function () {
@@ -88,47 +109,35 @@ $(document).ready(function () {
                 }, 500);
         });
 
+
+});
+
+async function cargar() {
         /***** THREEJS****/
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
 
-        loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
+         await loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
                 objetoCargado.position.set(70, 10, 0);
                 objetoCargado.scale.set(0.01, 0.01, 0.01);
 
                 scene.add(objetoCargado);
         });
+
+        players[0].name = NombreSave;
+        players[1].name = NombreSave2;
+
         render();
-});
+}
 
-var cargado;
-var scene;
-var camera;
-var renderer;
-var controls;
-var clock;
-var deltaTime;
-var keys = {};
-var Canvas1 = document.getElementById("scene-section");
-var Canvas2 = document.getElementById("scene-section-2");
-//Arreglos
-var renderers = [];
-var cameras = [];
-var players = [];
-//Global para su uso en otras funciones
-var visibleSize = {
-        width: window.innerWidth,
-        height: window.innerHeight,
-};
-
-function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
+ async function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
         var mtlLoader = new THREE.MTLLoader();
         mtlLoader.setPath(path);
 
         //Función anonima llamada lambda
-        mtlLoader.load(mtlFile, (materialCargado) => {
+        await mtlLoader.load(mtlFile, (materialCargado) => {
                 materialCargado.preload();
                 //Este bloque se ejecuta solo cuando termina de cargar el MTL
 
@@ -331,6 +340,13 @@ function escena01() {
         players[0].position.set(28.12, 14.33, -4.67);
         players[1].position.set(28.12, 14.33, -4.67);
 
+
+        players[0].encontrados = 0;
+        players[1].encontrados = 0;
+
+        players[0].escena = 1;
+        players[1].escena = 1;
+
 }
 
 function escena02() {
@@ -340,6 +356,13 @@ function escena02() {
         cameras[1].rotation.y = THREE.Math.degToRad(100);
         players[0].position.set(41.08, 19.78, 27.99);
         players[1].position.set(41.08, 19.78, 27.99);
-        players[0].scale.set(0.5,0.5,0.5);
-        players[1].scale.set(0.5,0.5,0.5);
+        players[0].scale.set(0.5, 0.5, 0.5);
+        players[1].scale.set(0.5, 0.5, 0.5);
+
+
+        players[0].encontrados = 5;
+        players[1].encontrados = 3;
+
+        players[0].escena = 2;
+        players[1].escena = 2;
 }

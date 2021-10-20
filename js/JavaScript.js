@@ -94,6 +94,12 @@ $(document).ready(function () {
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
+
+        loadOBJWithMTL("assets/", "ParedDivisora.obj", "ParedDivisora.mtl", (objetoCargado)=>{
+                objetoCargado.position.z = -20;
+                
+                scene.add(objetoCargado);
+        });
         render();
 });
 
@@ -115,9 +121,31 @@ var visibleSize = {
         height: window.innerHeight,
 };
 
+function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
+        var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.setPath(path);
+
+        //Función anonima llamada lambda
+        mtlLoader.load(mtlFile, (materialCargado)=>{
+                materialCargado.preload();
+                //Este bloque se ejecuta solo cuando termina de cargar el MTL
+
+                var objLoader = new THREE.OBJLoader();
+                objLoader.setPath(path);
+                objLoader.setMaterials(materialCargado);
+
+                objLoader.load(objFile, (objCargado)=>{
+                        //Este bloque se ejecuta solo cuando termina de cargar el OBJ
+                        onLoadCallback(objCargado);
+                });
+
+        });
+
+}
 
 function onKeyDown(event) {
         keys[String.fromCharCode(event.keyCode)] = true;
+
 }
 function onKeyUp(event) {
         keys[String.fromCharCode(event.keyCode)] = false;
@@ -210,6 +238,7 @@ function render() {
         for (var i = 0; i < players.length; i++) {
                 players[i].yaw = 0;
                 players[i].forward = 0;
+                players[i].elevacion = 0;
         }
 
 
@@ -235,6 +264,10 @@ function render() {
                         players[0].forward = -5;
                 } else if (keys["S"]) {
                         players[0].forward = 5;
+                }else if (keys["Q"]) {
+                        players[0].elevacion = 5;
+                }else if (keys["E"]) {
+                        players[0].elevacion = -5;
                 }
 
 
@@ -248,6 +281,10 @@ function render() {
                         players[1].forward = -5;
                 } else if (keys["("]) {
                         players[1].forward = 5;
+                }else if (keys["a"]) {
+                        players[1].elevacion = 5;
+                }else if (keys["b"]) {
+                        players[1].elevacion = -5;
                 }
         }
 
@@ -257,6 +294,8 @@ function render() {
         for (var i = 0; i < players.length; i++) {
                 players[i].rotation.y += players[i].yaw * deltaTime;
                 players[i].translateZ(players[i].forward * deltaTime);
+                players[i].translateY(players[i].elevacion * deltaTime);
+                //console.log(players[i].elevacion);
         }
 
         renderers[0].render(scene, cameras[0]);

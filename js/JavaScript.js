@@ -11,6 +11,7 @@ $(document).ready(function () {
         Bienvenido.style.visibility = "visible";
         var NombreSave;
         var NombreSave2;
+        /* 
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
                 var nombre2 = document.getElementById("input2").value;
@@ -86,18 +87,25 @@ $(document).ready(function () {
                         modal1.style.opacity = 0;
                 }, 500);
         });
+*/
 
-
-
+Contenedor.style.visibility = "hidden";
+Contenedor.style.opacity = 0;
+Iconos.style.visibility = "visible";
+Iconos.style.opacity = 1;
+Canvas.style.visibility = "visible";
+Canvas.style.opacity = 1;
+cargado = true;
         /***** THREEJS****/
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
 
-        loadOBJWithMTL("assets/", "ParedDivisora.obj", "ParedDivisora.mtl", (objetoCargado)=>{
-                objetoCargado.position.z = -20;
-                
+        loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
+                objetoCargado.position.set(70, 10, 0);
+                objetoCargado.scale.set(0.01, 0.01, 0.01);
+
                 scene.add(objetoCargado);
         });
         render();
@@ -111,6 +119,8 @@ var controls;
 var clock;
 var deltaTime;
 var keys = {};
+var Canvas1 = document.getElementById("scene-section");
+var Canvas2 = document.getElementById("scene-section-2");
 //Arreglos
 var renderers = [];
 var cameras = [];
@@ -126,7 +136,7 @@ function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
         mtlLoader.setPath(path);
 
         //Función anonima llamada lambda
-        mtlLoader.load(mtlFile, (materialCargado)=>{
+        mtlLoader.load(mtlFile, (materialCargado) => {
                 materialCargado.preload();
                 //Este bloque se ejecuta solo cuando termina de cargar el MTL
 
@@ -134,7 +144,7 @@ function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
                 objLoader.setPath(path);
                 objLoader.setMaterials(materialCargado);
 
-                objLoader.load(objFile, (objCargado)=>{
+                objLoader.load(objFile, (objCargado) => {
                         //Este bloque se ejecuta solo cuando termina de cargar el OBJ
                         onLoadCallback(objCargado);
                 });
@@ -190,7 +200,8 @@ function setupScene() {
         player2.material = new THREE.MeshLambertMaterial({
                 color: new THREE.Color(0.5, 0.5, 0.0),
         });
-        player2.position.x = -1;
+        player2.position.set(31.04, 14.33, -1.76);
+        player2.rotation.y = THREE.Math.degToRad(45);
 
         scene.add(player1);
         scene.add(player2);
@@ -205,7 +216,8 @@ function setupScene() {
         player2.forward = 0;
 
         player1.add(cameras[0]);
-        player2.add(cameras[1]);
+        //player2.add(cameras[1]);
+        escena02();
 
         $("#scene-section").append(renderers[0].domElement);
         $("#scene-section-2").append(renderers[1].domElement);
@@ -229,6 +241,16 @@ function createRenderer(color) {
         renderers.push(renderer);
 }
 
+function actualizarRenderer() {
+        for (var i = 0; i < renderers.length; i++) {
+                renderers[i].setPixelRatio(visibleSize.width / 2 / visibleSize.height);
+                renderers[i].setSize(visibleSize.width / 2, visibleSize.height);
+        }
+        visibleSize = {
+                width: window.innerWidth,
+                height: window.innerHeight,
+        };
+}
 
 function render() {
         requestAnimationFrame(render);
@@ -241,9 +263,10 @@ function render() {
                 players[i].elevacion = 0;
         }
 
+        actualizarRenderer();
 
         if (cargado == true) {
-                $("#tablita tr").remove(); 
+                $("#tablita tr").remove();
                 var fila = "<tr><td class='titulo' >" + players[0].name + "</td><td class='titulo'>" + players[0].encontrados + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
                 var btn = document.createElement("TR");
                 btn.innerHTML = fila;
@@ -264,9 +287,9 @@ function render() {
                         players[0].forward = -5;
                 } else if (keys["S"]) {
                         players[0].forward = 5;
-                }else if (keys["Q"]) {
+                } else if (keys["Q"]) {
                         players[0].elevacion = 5;
-                }else if (keys["E"]) {
+                } else if (keys["E"]) {
                         players[0].elevacion = -5;
                 }
 
@@ -281,10 +304,15 @@ function render() {
                         players[1].forward = -5;
                 } else if (keys["("]) {
                         players[1].forward = 5;
-                }else if (keys["a"]) {
+                } else if (keys["a"]) {
                         players[1].elevacion = 5;
-                }else if (keys["b"]) {
+                } else if (keys["b"]) {
                         players[1].elevacion = -5;
+                }
+
+
+                if(keys["R"]){
+                        console.log(players[0].position);
                 }
         }
 
@@ -300,5 +328,23 @@ function render() {
 
         renderers[0].render(scene, cameras[0]);
         renderers[1].render(scene, cameras[1]);
+        
 }
 
+function escena01(){
+        /*/
+        for(var i = 0; i < players.length; i++){
+                players[i].position.set(31.04, 14.33, -1.76);
+                players[i].rotation.y = THREE.Math.degToRad(45);
+        }
+        */
+        cameras[1].position.set(31.04, 14.33, -1.76);
+        cameras[1].rotation.y = THREE.Math.degToRad(45);
+        
+}
+
+function escena02(){
+        cameras[1].position.set(43.42, 19.78, 27.85);
+        cameras[1].rotation.y = THREE.Math.degToRad(100);
+        
+}

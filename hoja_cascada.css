@@ -515,8 +515,6 @@ body>iframe:first-child {
 	left: 0;
 	visibility: hidden;
 	opacity: 0;
-	width: 100vw;
-	height: 100vh;
 	background-color: pink;
 	display: flex;
 	transition: .5s;
@@ -529,7 +527,7 @@ body>iframe:first-child {
 	left: 0;
 	width: 22vw;
 	height: 22vh;
-	transform: translate(calc(100vw - 22.5vw), 2vh);
+	transform: translate(calc(100vw - 22.5vw), -1vh);
 	margin-right: 2%;
 }
 

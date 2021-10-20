@@ -11,7 +11,7 @@ $(document).ready(function () {
         Bienvenido.style.visibility = "visible";
         var NombreSave;
         var NombreSave2;
-        /* 
+
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
                 var nombre2 = document.getElementById("input2").value;
@@ -87,22 +87,14 @@ $(document).ready(function () {
                         modal1.style.opacity = 0;
                 }, 500);
         });
-*/
 
-Contenedor.style.visibility = "hidden";
-Contenedor.style.opacity = 0;
-Iconos.style.visibility = "visible";
-Iconos.style.opacity = 1;
-Canvas.style.visibility = "visible";
-Canvas.style.opacity = 1;
-cargado = true;
         /***** THREEJS****/
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
 
-        loadOBJWithMTL("assets/", "untitled-try2.obj", "untitled-try2.mtl", (objetoCargado) => {
+        loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
                 objetoCargado.position.set(70, 10, 0);
                 objetoCargado.scale.set(0.01, 0.01, 0.01);
 
@@ -215,9 +207,8 @@ function setupScene() {
         player2.yaw = 0;
         player2.forward = 0;
 
-        player1.add(cameras[0]);
-        //player2.add(cameras[1]);
-        escena02();
+        escena01();
+        //escena02();
 
         $("#scene-section").append(renderers[0].domElement);
         $("#scene-section-2").append(renderers[1].domElement);
@@ -311,8 +302,9 @@ function render() {
                 }
 
 
-                if(keys["R"]){
+                if (keys["R"]) {
                         console.log(players[0].position);
+                        console.log(players[1].position);
                 }
         }
 
@@ -328,23 +320,26 @@ function render() {
 
         renderers[0].render(scene, cameras[0]);
         renderers[1].render(scene, cameras[1]);
-        
+
 }
 
-function escena01(){
-        /*/
-        for(var i = 0; i < players.length; i++){
-                players[i].position.set(31.04, 14.33, -1.76);
-                players[i].rotation.y = THREE.Math.degToRad(45);
-        }
-        */
+function escena01() {
+        cameras[0].position.set(31.04, 14.33, -1.76);
+        cameras[0].rotation.y = THREE.Math.degToRad(45);
         cameras[1].position.set(31.04, 14.33, -1.76);
         cameras[1].rotation.y = THREE.Math.degToRad(45);
-        
+        players[0].position.set(28.12, 14.33, -4.67);
+        players[1].position.set(28.12, 14.33, -4.67);
+
 }
 
-function escena02(){
+function escena02() {
+        cameras[0].position.set(43.42, 19.78, 27.85);
+        cameras[0].rotation.y = THREE.Math.degToRad(100);
         cameras[1].position.set(43.42, 19.78, 27.85);
         cameras[1].rotation.y = THREE.Math.degToRad(100);
-        
+        players[0].position.set(41.08, 19.78, 27.99);
+        players[1].position.set(41.08, 19.78, 27.99);
+        players[0].scale.set(0.5,0.5,0.5);
+        players[1].scale.set(0.5,0.5,0.5);
 }

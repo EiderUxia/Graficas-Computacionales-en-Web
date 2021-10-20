@@ -102,7 +102,7 @@ cargado = true;
         document.addEventListener("keyup", onKeyUp);
 
 
-        loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
+        loadOBJWithMTL("assets/", "untitled-try2.obj", "untitled-try2.mtl", (objetoCargado) => {
                 objetoCargado.position.set(70, 10, 0);
                 objetoCargado.scale.set(0.01, 0.01, 0.01);
 

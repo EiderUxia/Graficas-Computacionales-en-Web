@@ -21,6 +21,9 @@
 	<!---   JavaScript:    --->
 	<!---   jquery:    --->
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="js/three/three.js"></script>
+	<script type="text/javascript" src="js/three/MTLLoader.js"></script>
+	<script type="text/javascript" src="js/three/OBJLoader.js"></script>
 	<!---   .js:    --->
 	<script type="text/javascript" src="js/JavaScript.js"></script>
 
@@ -68,7 +71,11 @@
 		<div id="Bienvenido">
 			<p class="neon">Bienvenido</p>
 			<p class="neon">Por favor inserta tu nombre:</p>
-			<input id="txtName" type="text" placeholder="Nombre" required autocomplete="off">
+			<input id="input" type="text" placeholder="Jugador 1" required autocomplete="off"><span></span></span>
+			<span class="input">
+
+				<input id="input2" type="text" placeholder="Jugador 2" required autocomplete="off"><span></span></span>
+			<button id="btnEnviar">Enviar</button>
 			<button id="btnEnviar">Enviar</button>
 		</div>
 
@@ -90,6 +97,8 @@
 	</div>
 
 	<div id="contCanvas">
+		<div style="width: 50%" id="scene-section"></div>
+		<div style="flex-grow: 1" id="scene-section-2"></div>
 		<div id="config"></div>
 		<div id="tabla">
 			<table class="table table-striped table-dark">

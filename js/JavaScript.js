@@ -15,6 +15,10 @@ var cameras = [];
 var players = [];
 var NombreSave;
 var NombreSave2;
+var RCaster;
+var objetosConColision = [];
+var objetosConColision2 = [];
+var isWorldReady = false;
 //Global para su uso en otras funciones
 var visibleSize = {
         width: window.innerWidth,
@@ -32,6 +36,7 @@ $(document).ready(function () {
         var Sonido = document.getElementById("Sonido");
         let modal1 = document.getElementById("modal-1");
         cargado = false;
+        RCaster = new THREE.Raycaster();
 
         Bienvenido.style.visibility = "visible";
         cargar();
@@ -126,13 +131,17 @@ async function cargar() {
         document.addEventListener("keyup", onKeyUp);
 
 
-         await loadOBJWithMTL("assets/", "conuvs.obj", "conuvs.mtl", (objetoCargado) => {
+         await loadOBJWithMTL("assets/", "keki.obj", "keki.mtl", (objetoCargado) => {
                 objetoCargado.position.set(0, 0, 0);
                 objetoCargado.scale.set(1, 1, 1);
                 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
                 scene2.add(objetoCargado2);
+
+                objetosConColision.push(objetoCargado);
+                objetosConColision2.push(objetoCargado2);
+                isWorldReady = true;
         });
 
         players[0].name = NombreSave;
@@ -165,6 +174,7 @@ async function cargar() {
 
 function onKeyDown(event) {
         keys[String.fromCharCode(event.keyCode)] = true;
+        //debugger;
 
 }
 function onKeyUp(event) {
@@ -222,11 +232,17 @@ function setupScene() {
         player2.material = new THREE.MeshLambertMaterial({
                 color: new THREE.Color(0.5, 0.5, 0.0),
         });
-        //player2.position.set(31.04, 14.33, -1.76);
-        //player2.rotation.y = THREE.Math.degToRad(45);
+         
+        player1.rayos = [
+                new THREE.Vector3(0, 1, 0),
+                new THREE.Vector3(0, -1, 0)
 
-        //player1.add(cameras[0]);
-        //player2.add(cameras[1]);
+        ];
+        player2.rayos = [
+                new THREE.Vector3(0, 1, 0),
+                new THREE.Vector3(0, -1, 0)
+
+        ];
 
         scene.add(player1);
         scene2.add(player2);
@@ -311,6 +327,26 @@ function render() {
                         players[0].forward = -10;
                 } else if (keys["S"]) {
                         players[0].forward = 10;
+                }else if (keys["Q"]) {
+                        for(var i = 0; i < players[0].rayos.length; i++){
+
+				var rayo = players[0].rayos[i];
+
+				//1er parametro desde que punto va a ser lanzado el rayo o vector
+				//2do parametro es el rayo o vector
+				RCaster.set(players[0].position, rayo);
+
+				//Detectar la colision de 1 objeto que se pone dentro de ()
+				//true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
+				var colisiones = RCaster.intersectObjects(objetosConColision, true);
+
+
+				if(colisiones.length > 0 && colisiones[0].distance < 1){
+					console.log("Colisionando! 01");
+					colisiones[0].object.rotation.x =2;
+				}
+			
+			}
                 }
 
 
@@ -324,23 +360,32 @@ function render() {
                         players[1].forward = -10;
                 } else if (keys["("]) {
                         players[1].forward = 10;
+                }else if (keys["a"]) {
+                        for(var i = 0; i < players[1].rayos.length; i++){
+
+				var rayo = players[1].rayos[i];
+
+				//1er parametro desde que punto va a ser lanzado el rayo o vector
+				//2do parametro es el rayo o vector
+				RCaster.set(players[1].position, rayo);
+
+				//Detectar la colision de 1 objeto que se pone dentro de ()
+				//true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
+				var colisiones = RCaster.intersectObjects(objetosConColision2, true);
+
+
+				if(colisiones.length > 0 && colisiones[0].distance < 1){
+					console.log("Colisionando! 02");
+					colisiones[0].object.rotation.x =2;
+				}
+			
+			}
                 }
 
-                if (keys["R"]) {
-                        console.log(players[0].position);
-                        console.log(players[1].position);
-                }
+
+        
         }
 
-
-
-        //Crear la rotacion y mivimiento de los jugadores
-       /* for (var i = 0; i < players.length; i++) {
-                players[i].rotation.y += players[i].yaw * deltaTime;
-                players[i].translateZ(players[i].forward * deltaTime);
-                players[i].translateY(players[i].elevacion * deltaTime);
-                //console.log(players[i].elevacion);
-        }*/
         for (var i = 0; i < players.length; i++) {
                 players[i].position.x += players[i].yaw * deltaTime;
                 players[i].position.z += players[i].forward * deltaTime;                

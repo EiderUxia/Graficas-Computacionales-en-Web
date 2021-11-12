@@ -545,6 +545,13 @@ body>iframe:first-child {
 	height: 100vh;
 }
 
+/*la wea de audio*/
+div.audio {}
+audio {display: block; }
+
+.score { width: 180px; }
+.score, .lives, .level { display: inline-block; }
+
 #config {
 	position: fixed;
 	z-index: 15;

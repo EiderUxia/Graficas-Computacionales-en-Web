@@ -25,6 +25,14 @@ var visibleSize = {
         height: window.innerHeight,
 };
 
+// wea de audio
+        var Sound = {};
+        Sound.play = function (sound) {
+                if (game.soundfx == 1) {
+                        var audio = document.getElementById(sound);
+                        (audio !== null) ? audio.play(): console.log(sound + " not found");
+                }
+        };
 
 $(document).ready(function () {
         var Bienvenido = document.getElementById("Bienvenido");

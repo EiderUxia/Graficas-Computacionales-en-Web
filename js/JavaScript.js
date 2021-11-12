@@ -1,5 +1,6 @@
 var cargado;
 var scene;
+var scene2;
 var camera;
 var renderer;
 var controls;
@@ -31,8 +32,14 @@ $(document).ready(function () {
         var Sonido = document.getElementById("Sonido");
         let modal1 = document.getElementById("modal-1");
         cargado = false;
-        Bienvenido.style.visibility = "visible";
 
+        Bienvenido.style.visibility = "visible";
+        cargar();
+        Contenedor.style.visibility = "hidden";
+        Contenedor.style.opacity = 0;
+        Canvas.style.visibility = "visible";
+        Canvas.style.opacity = 1;
+        cargado = true;
 
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
@@ -119,11 +126,13 @@ async function cargar() {
         document.addEventListener("keyup", onKeyUp);
 
 
-         await loadOBJWithMTL("assets/", "escenario.obj", "Escenario.mtl", (objetoCargado) => {
-                objetoCargado.position.set(70, 10, 0);
-                objetoCargado.scale.set(0.01, 0.01, 0.01);
-
+         await loadOBJWithMTL("assets/", "conuvs.obj", "conuvs.mtl", (objetoCargado) => {
+                objetoCargado.position.set(0, 0, 0);
+                objetoCargado.scale.set(1, 1, 1);
+                
                 scene.add(objetoCargado);
+                var objetoCargado2 = objetoCargado.clone();
+                scene2.add(objetoCargado2);
         });
 
         players[0].name = NombreSave;
@@ -165,9 +174,15 @@ function onKeyUp(event) {
 function setupScene() {
         clock = new THREE.Clock();
         scene = new THREE.Scene();
+        scene2 = new THREE.Scene();
 
         createCamera();
         createCamera();
+
+        cameras[0].position.set(0,20,0);
+        cameras[1].position.set(0,20,0);
+        cameras[0].rotation.x = THREE.Math.degToRad(-90);
+        cameras[1].rotation.x = THREE.Math.degToRad(-90);
 
         createRenderer(new THREE.Color(0, 0, 0));
         createRenderer(new THREE.Color(0.2, 0.2, 0.2));
@@ -176,18 +191,24 @@ function setupScene() {
                 new THREE.Color(1, 1, 1),
                 1.0
         );
+        var ambientLight2 = ambientLight.clone();
         scene.add(ambientLight);
+        scene2.add(ambientLight2);
 
         var directionalLight = new THREE.DirectionalLight(
                 new THREE.Color(1, 1, 0),
                 0.4
         );
         directionalLight.position.set(0, 0, 1);
+        var directionalLight2 = directionalLight.clone();
         scene.add(directionalLight);
+        scene2.add(directionalLight2);
 
         var grid = new THREE.GridHelper(50, 10, 0xffffff, 0xffffff);
         grid.position.y = -1;
+        var grid2 = grid.clone();
         scene.add(grid);
+        scene2.add(grid2);
 
         var material = new THREE.MeshLambertMaterial({
                 color: new THREE.Color(0.5, 0.0, 0.0),
@@ -195,17 +216,20 @@ function setupScene() {
         var geometry = new THREE.BoxGeometry(1, 1, 1);
 
         var player1 = new THREE.Mesh(geometry, material);
-        player1.position.x = 1;
+        player1.position.y = 10;
 
         var player2 = player1.clone();
         player2.material = new THREE.MeshLambertMaterial({
                 color: new THREE.Color(0.5, 0.5, 0.0),
         });
-        player2.position.set(31.04, 14.33, -1.76);
-        player2.rotation.y = THREE.Math.degToRad(45);
+        //player2.position.set(31.04, 14.33, -1.76);
+        //player2.rotation.y = THREE.Math.degToRad(45);
+
+        //player1.add(cameras[0]);
+        //player2.add(cameras[1]);
 
         scene.add(player1);
-        scene.add(player2);
+        scene2.add(player2);
 
         players.push(player1);
         players.push(player2);
@@ -216,8 +240,9 @@ function setupScene() {
         player2.yaw = 0;
         player2.forward = 0;
 
-        escena01();
+        //escena01();
         //escena02();
+        //renderer[1].scene.player2.remove();
 
         $("#scene-section").append(renderers[0].domElement);
         $("#scene-section-2").append(renderers[1].domElement);
@@ -260,7 +285,6 @@ function render() {
         for (var i = 0; i < players.length; i++) {
                 players[i].yaw = 0;
                 players[i].forward = 0;
-                players[i].elevacion = 0;
         }
 
         actualizarRenderer();
@@ -279,37 +303,28 @@ function render() {
 
                 //Player 1
                 if (keys["A"]) {
-                        players[0].yaw = 5;
+                        players[0].yaw = -10;
                 } else if (keys["D"]) {
-                        players[0].yaw = -5;
+                        players[0].yaw = 10;
                 }
                 if (keys["W"]) {
-                        players[0].forward = -5;
+                        players[0].forward = -10;
                 } else if (keys["S"]) {
-                        players[0].forward = 5;
-                } else if (keys["Q"]) {
-                        players[0].elevacion = 5;
-                } else if (keys["E"]) {
-                        players[0].elevacion = -5;
+                        players[0].forward = 10;
                 }
 
 
                 //Player 2
                 if (keys["%"]) {
-                        players[1].yaw = 5;
+                        players[1].yaw = -10;
                 } else if (keys["'"]) {
-                        players[1].yaw = -5;
+                        players[1].yaw = 10;
                 }
                 if (keys["&"]) {
-                        players[1].forward = -5;
+                        players[1].forward = -10;
                 } else if (keys["("]) {
-                        players[1].forward = 5;
-                } else if (keys["a"]) {
-                        players[1].elevacion = 5;
-                } else if (keys["b"]) {
-                        players[1].elevacion = -5;
+                        players[1].forward = 10;
                 }
-
 
                 if (keys["R"]) {
                         console.log(players[0].position);
@@ -320,25 +335,31 @@ function render() {
 
 
         //Crear la rotacion y mivimiento de los jugadores
-        for (var i = 0; i < players.length; i++) {
+       /* for (var i = 0; i < players.length; i++) {
                 players[i].rotation.y += players[i].yaw * deltaTime;
                 players[i].translateZ(players[i].forward * deltaTime);
                 players[i].translateY(players[i].elevacion * deltaTime);
                 //console.log(players[i].elevacion);
+        }*/
+        for (var i = 0; i < players.length; i++) {
+                players[i].position.x += players[i].yaw * deltaTime;
+                players[i].position.z += players[i].forward * deltaTime;                
         }
 
         renderers[0].render(scene, cameras[0]);
-        renderers[1].render(scene, cameras[1]);
+        renderers[1].render(scene2, cameras[1]);
 
 }
 
 function escena01() {
+        /*
         cameras[0].position.set(31.04, 14.33, -1.76);
         cameras[0].rotation.y = THREE.Math.degToRad(45);
         cameras[1].position.set(31.04, 14.33, -1.76);
         cameras[1].rotation.y = THREE.Math.degToRad(45);
         players[0].position.set(28.12, 14.33, -4.67);
         players[1].position.set(28.12, 14.33, -4.67);
+        */
 
 
         players[0].encontrados = 0;

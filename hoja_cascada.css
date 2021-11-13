@@ -545,12 +545,12 @@ body>iframe:first-child {
 	height: 100vh;
 }
 
-/*la wea de audio*/
+/*la wea de audio
 div.audio {}
 audio {display: block; }
 
 .score { width: 180px; }
-.score, .lives, .level { display: inline-block; }
+.score, .lives, .level { display: inline-block; }*/
 
 #config {
 	position: fixed;
@@ -605,6 +605,115 @@ audio {display: block; }
 	margin-top: 10%;
 }
 
+/*-------MUSIC PLAYER BY GLENTHEMES-------*/
+:root {
+   --Circle-Size:38px;
+   --Progress-Border-Size:2px;
+   --Progress-Empty:#eee;
+   --Progress-Fill:#333;
+   --Player-Background:#fbfbfb;
+   --Play-Pause-Buttons-Size:14px;
+   --Play-Pause-Buttons-Color:#111;
+   --Player-Text-Margin:16px;
+
+   --Song-Name-Font-Size:10px;
+   --Song-Name-Color:#111;
+
+   --Artist-Name-Font-Size:11px;
+   --Artist-Name-Color:#888;
+}
+
+#glenplayer07 {
+   position:fixed;
+   bottom:0;margin-bottom:30px;
+   left:0;margin-left:30px;
+   z-index:99;
+}
+
+.flamingo {
+   display:flex;
+   align-items:center;
+}
+
+.circleofdeath {
+   width:var(--Circle-Size);
+   height:var(--Circle-Size);
+   border-radius:100%;
+   overflow:hidden;
+}
+
+.tinfoil {
+   width:var(--Circle-Size);
+   height:var(--Circle-Size);
+   background:var(--Progress-Empty);
+   border-radius:100%;
+}
+
+.oven {
+   background:var(--Progress-Fill);
+}
+
+.oliveoil {
+   width:100%;
+   height:100%;
+}
+
+.crust {
+   position:absolute;
+   top:0;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   width:var(--Circle-Size);
+   height:var(--Circle-Size);
+}
+
+.cherry {
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   width:calc(var(--Circle-Size) - (var(--Progress-Border-Size) * 2));
+   height:calc(var(--Circle-Size) - (var(--Progress-Border-Size) * 2));
+   background:var(--Player-Background);
+   border-radius:100%;
+   cursor:pointer;
+   z-index:1;
+}
+
+.music-controls {display:flex;align-items:center}
+
+.music-controls .material-icons {
+   font-size:var(--Play-Pause-Buttons-Size);
+   color:var(--Play-Pause-Buttons-Color);
+}
+
+.pausee {display:none;}
+
+.beff {display:none;}
+.aff {display:block;}
+
+.music-info {
+   margin-left:var(--Player-Text-Margin);
+   line-height:1em;
+}
+
+.song-name {
+   font-family:ABeeZee;
+   font-size:var(--Song-Name-Font-Size);
+   text-transform:uppercase;
+   letter-spacing:1.5px;
+   color:var(--Song-Name-Color);
+}
+
+.artist-name {
+   margin-top:3px;
+   font-family:karla;
+   font-size:var(--Artist-Name-Font-Size);
+   letter-spacing:0.3px;
+   color:var(--Artist-Name-Color);
+}
+            
+/*-------MUSIC PLAYER BY GLENTHEMES-------*/
 #IcMusic {
 	background: url("Imagenes/Logo_de_musica.png");
 	background-size: cover;

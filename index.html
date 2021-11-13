@@ -30,6 +30,20 @@
 	<!--- .js: --->
 	<script type="text/javascript" src="./js/JavaScript.js"></script>
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=ABeeZee|Karla" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-------MUSIC PLAYER BY GLENTHEMES------->
+	<script src="//glenthemes.github.io/-music-/glenplayer07.js"></script>
+	<script>
+$(document).ready(function(){
+   var aaa = document.getElementById("audio");
+   aaa.volume = 0.3;
+});
+</script>
+            
+
 	<!---   Boostrap:    --->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -46,11 +60,17 @@
 
 <body>
 
+
+            
+
 	<div id="modal-1">
 		<div id="configuracion">
 
 			<div class="contenedorConf">
-				<div id="IcMusic"></div>
+				<div id="IcMusic"><audio id="theme" preload="auto">
+				<source src="assets/theme.wav" type="audio/wav">
+				<source src="assets/theme.mp3" type="audio/mpeg">
+			</audio></div>
 				<div id="Musica">Musica</div>
 			</div>
 			<div class="contenedorConf">
@@ -157,12 +177,35 @@
 	</div>
 
 	<div id="contCanvas">
+
 		<div style="width: 50%" id="scene-section"></div>
 		<div style="flex-grow: 1" id="scene-section-2"></div>
-		<div id="config"><audio id="theme" preload="auto">
-				<source src="assets/theme.wav" type="audio/wav">
-				<source src="assets/theme.mp3" type="audio/mpeg">
-			</audio></div>
+		<div id="config"><!-------MUSIC PLAYER BY GLENTHEMES------->
+<div id="glenplayer07">
+   <div class="flamingo">
+       <div class="circleofdeath">
+           <div class="tinfoil">
+               <div class="oliveoil"></div>
+           </div>
+          <div class="crust">
+               <div class="cherry">
+                   <div class="music-controls">
+                       <i class="material-icons playy">play_arrow</i>
+                       <i class="material-icons pausee">pause</i>
+                   </div>
+               </div><!--cherry-->
+           </div><!--crust-->
+       </div><!--circleofdeath-->
+
+       <div class="music-info">
+           <div class="song-name">Sterelogue</div>
+           <div class="artist-name">Veeta Crush</div>
+       </div><!--music-info-->
+   </div><!--flamingo-->
+</div><!--glenplayer07-->
+
+<audio id="audio" src="https://cdn.discordapp.com/attachments/843613696307757096/908924995982483507/9convert.com_-_Arrempujala_Arremangala_1080p.mp3" type="audio"></audio>
+<!----end music player----></div>
 
 		<div id="tabla">
 			<table class="table table-striped table-dark">

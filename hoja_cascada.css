@@ -523,6 +523,7 @@ body>iframe:first-child {
 #tabla {
 	position: fixed;
 	z-index: 15;
+	background-color: peachpuff;
 	top: 0;
 	left: 0;
 	width: 22vw;
@@ -582,18 +583,24 @@ audio {display: block; }
 	visibility: hidden;
 	opacity: 0;
 	transition: .5s;
+
 }
 
 #configuracion {
 	width: 50vw;
 	height: 30vw;
 	z-index: 600;
-	background: rgb(91, 78, 85);
+	background:rgb(255,203,164),linear-gradient(to bottom, red, blue),
+                green;;
+	background-blend-mode: luminosity, screen;
+	
+
 	justify-content: center;
 	position: relative;
 	cursor: pointer;
 	border-radius: 15px;
 	border: solid 1.5px;
+	
 }
 
 .contenedorConf {
@@ -603,6 +610,7 @@ audio {display: block; }
 	justify-content: center;
 	align-items: center;
 	margin-top: 10%;
+
 }
 
 /*-------MUSIC PLAYER BY GLENTHEMES-------*/

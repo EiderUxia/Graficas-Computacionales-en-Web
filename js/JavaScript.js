@@ -70,9 +70,9 @@ $(document).ready(function () {
                                 alert("Falta nombre del jugador 2");
                         }
                 } else {
-                        alert("Falta nombre del jugador 1");
+                        alert("Falta nombre del jugador 1"); 
                 }
-        });
+        });  
 
         $("#SelecNormal").click( async function () {
 
@@ -139,9 +139,10 @@ async function cargar() {
         document.addEventListener("keyup", onKeyUp);
 
 
-         await loadOBJWithMTL("assets/", "keki.obj", "keki.mtl", (objetoCargado) => {
+
+         await loadOBJWithMTL("assets/", "ptm.obj", "ptm.mtl", (objetoCargado) => {
                 objetoCargado.position.set(0, 0, 0);
-                objetoCargado.scale.set(1, 1, 1);
+               // objetoCargado.scale.set(100, 100, 100);
                 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
@@ -197,10 +198,10 @@ function setupScene() {
         createCamera();
         createCamera();
 
-        cameras[0].position.set(0,20,0);
-        cameras[1].position.set(0,20,0);
-        cameras[0].rotation.x = THREE.Math.degToRad(-90);
-        cameras[1].rotation.x = THREE.Math.degToRad(-90);
+        cameras[0].position.set(0,25,0);
+        cameras[1].position.set(0,25,0);
+        cameras[0].rotation.x = THREE.Math.degToRad(-75);
+        cameras[1].rotation.x = THREE.Math.degToRad(-75);
 
         createRenderer(new THREE.Color(0, 0, 0));
         createRenderer(new THREE.Color(0.2, 0.2, 0.2));
@@ -349,7 +350,7 @@ function render() {
 				var colisiones = RCaster.intersectObjects(objetosConColision, true);
 
 
-				if(colisiones.length > 0 && colisiones[0].distance < 1){
+				if(colisiones.length > 0.5 && colisiones[0].distance < 1){
 					console.log("Colisionando! 01");
 					colisiones[0].object.rotation.x =2;
 				}
@@ -405,21 +406,21 @@ function render() {
 }
 
 function escena01() {
-        /*
-        cameras[0].position.set(31.04, 14.33, -1.76);
-        cameras[0].rotation.y = THREE.Math.degToRad(45);
-        cameras[1].position.set(31.04, 14.33, -1.76);
-        cameras[1].rotation.y = THREE.Math.degToRad(45);
-        players[0].position.set(28.12, 14.33, -4.67);
+        
+      //  cameras[0].position.set(31.04, 14.33, -1.76);
+        //cameras[0].rotation.y = THREE.Math.degToRad(45);
+       // cameras[1].position.set(31.04, 14.33, -1.76);
+   //     cameras[1].rotation.y = THREE.Math.degToRad(45);
+     //   players[0].position.set(28.12, 14.33, -4.67);
         players[1].position.set(28.12, 14.33, -4.67);
-        */
+        
 
 
-        players[0].encontrados = 0;
-        players[1].encontrados = 0;
+        //players[0].encontrados = 0;
+       // players[1].encontrados = 0;
 
-        players[0].escena = 1;
-        players[1].escena = 1;
+        //players[0].escena = 1;
+        //players[1].escena = 1;
 
 }
 

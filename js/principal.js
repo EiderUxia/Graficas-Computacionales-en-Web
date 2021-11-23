@@ -124,16 +124,16 @@ $(document).ready(function () {
 
 });
 
-async function cargar() {
+function cargar() {
         /***** THREEJS****/
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
 
-        await loadOBJWithMTL("assets/", "keki.obj", "keki.mtl", (objetoCargado) => {
+        loadOBJWithMTL("assets/", "Escenario.obj", "Escenario.mtl", (objetoCargado) => {
                 objetoCargado.position.set(0, 0, 0);
-                objetoCargado.scale.set(1, 1, 1);
+                //objetoCargado.scale.set(1, 1, 1);
 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
@@ -150,13 +150,12 @@ async function cargar() {
         render();
 }
 
-async function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
+function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
         var mtlLoader = new THREE.MTLLoader();
         mtlLoader.setPath(path);
 
         //Función anonima llamada lambda
-        await mtlLoader.load(mtlFile, (materialCargado) => {
-                materialCargado.preload();
+        mtlLoader.load(mtlFile, (materialCargado) => {
                 //Este bloque se ejecuta solo cuando termina de cargar el MTL
 
                 var objLoader = new THREE.OBJLoader();

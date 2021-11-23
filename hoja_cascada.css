@@ -627,3 +627,12 @@ th {
 td {
 	background: rgb(91, 78, 85);
 }
+
+#scene-section{
+	background-image: url("./assets/woman-traditional-oriental-clothes-walks-dense-forest.jpg");
+	background-size: cover;
+
+}
+#scene-section-2{
+	background-size: cover;
+}

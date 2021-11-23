@@ -92,8 +92,7 @@ function createCamera() {
 }
 
 function createRenderer(color) {
-    var renderer = new THREE.WebGLRenderer({ precision: "mediump" });
-    renderer.setClearColor(color);
+    var renderer = new THREE.WebGLRenderer({ precision: "mediump", alpha: true,});
     renderer.setPixelRatio(visibleSize.width / 2 / visibleSize.height);
     renderer.setSize(visibleSize.width / 2, visibleSize.height);
     renderers.push(renderer);

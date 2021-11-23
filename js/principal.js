@@ -9,6 +9,7 @@ var deltaTime;
 var keys = {};
 var Canvas1 = document.getElementById("scene-section");
 var Canvas2 = document.getElementById("scene-section-2");
+var Canvas = document.getElementById("c");
 //Arreglos
 var renderers = [];
 var cameras = [];
@@ -129,12 +130,12 @@ function cargar() {
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
-
-/*
-        loadOBJWithMTL("assets/", "01E.obj", "01E.mtl", (objetoCargado) => {
-                objetoCargado.rotation.set(0, 0, 0);
-                objetoCargado.position.set(0, 0, 0);
-                //objetoCargado.scale.set(1, 1, 1);
+        $('#scene-section-2').css("background-image", "url(./assets/woman-traditional-oriental-clothes-walks-dense-forest.jpg)"); 
+        
+        loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(-1.5, 0, 0);
+                objetoCargado.scale.set(2, 2, 2);
+                objetoCargado.position.set(0, -9,10);
 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
@@ -144,7 +145,7 @@ function cargar() {
                 objetosConColision2.push(objetoCargado2);
                 isWorldReady = true;
         });
-        */
+       /* 
         loadOBJWithMTL("assets/", "jardinmasgrande.obj", "jardinmasgrande.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(0.2, 0, 0);
                 objetoCargado.position.set(0, -20, 10);
@@ -158,7 +159,7 @@ function cargar() {
                 objetosConColision2.push(objetoCargado2);
                 isWorldReady = true;
         });
-
+*/
         players[0].name = NombreSave;
         players[1].name = NombreSave2;
 

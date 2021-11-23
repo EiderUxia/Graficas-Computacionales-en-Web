@@ -130,10 +130,25 @@ function cargar() {
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
-
-        loadOBJWithMTL("assets/", "Escenario.obj", "Escenario.mtl", (objetoCargado) => {
+/*
+        loadOBJWithMTL("assets/", "01E.obj", "01E.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(0, 0, 0);
                 objetoCargado.position.set(0, 0, 0);
                 //objetoCargado.scale.set(1, 1, 1);
+
+                scene.add(objetoCargado);
+                var objetoCargado2 = objetoCargado.clone();
+                scene2.add(objetoCargado2);
+
+                objetosConColision.push(objetoCargado);
+                objetosConColision2.push(objetoCargado2);
+                isWorldReady = true;
+        });
+        */
+        loadOBJWithMTL("assets/", "jardinmasgrande.obj", "jardinmasgrande.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(0.2, 0, 0);
+                objetoCargado.position.set(0, -20, 10);
+                objetoCargado.scale.set(2, 2, 2);
 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();

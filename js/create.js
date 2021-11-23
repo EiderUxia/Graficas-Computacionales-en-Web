@@ -6,8 +6,8 @@ function setupScene() {
     createCamera();
     createCamera();
 
-    cameras[0].position.set(0, 20, 0);
-    cameras[1].position.set(0, 20, 0);
+    cameras[0].position.set(0, 25, 0);
+    cameras[1].position.set(0, 25, 0);
     cameras[0].rotation.x = THREE.Math.degToRad(-90);
     cameras[1].rotation.x = THREE.Math.degToRad(-90);
 

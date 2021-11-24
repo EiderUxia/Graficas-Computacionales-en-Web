@@ -130,12 +130,17 @@ function cargar() {
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
-        $('#scene-section-2').css("background-image", "url(./assets/woman-traditional-oriental-clothes-walks-dense-forest.jpg)"); 
-        
+
+
+
+        /*
+                $('#scene-section').css("background-image", "url(./assets/forest.jpg)");
+                $('#scene-section-2').css("background-image", "url(./assets/forest.jpg)")
+ 
         loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
-                objetoCargado.rotation.set(-1.5, 0, 0);
-                objetoCargado.scale.set(2, 2, 2);
-                objetoCargado.position.set(0, -9,10);
+                objetoCargado.rotation.set(-1.3, 0, 0);
+                objetoCargado.scale.set(5, 5, 5);
+                objetoCargado.position.set(0, -50, 34.5);
 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
@@ -145,11 +150,13 @@ function cargar() {
                 objetosConColision2.push(objetoCargado2);
                 isWorldReady = true;
         });
-       /* 
-        loadOBJWithMTL("assets/", "jardinmasgrande.obj", "jardinmasgrande.mtl", (objetoCargado) => {
-                objetoCargado.rotation.set(0.2, 0, 0);
-                objetoCargado.position.set(0, -20, 10);
-                objetoCargado.scale.set(2, 2, 2);
+        */
+        $('#scene-section').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
+        $('#scene-section-2').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
+        loadOBJWithMTL("assets/", "jardin.obj", "jardin.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(1.7, 3, 8);
+                objetoCargado.rotation.set(-1.5, -3.15, 0);
+                objetoCargado.position.set(-2, -200, 35);
 
                 scene.add(objetoCargado);
                 var objetoCargado2 = objetoCargado.clone();
@@ -159,7 +166,7 @@ function cargar() {
                 objetosConColision2.push(objetoCargado2);
                 isWorldReady = true;
         });
-*/
+
         players[0].name = NombreSave;
         players[1].name = NombreSave2;
 

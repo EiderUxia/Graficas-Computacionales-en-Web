@@ -6,8 +6,8 @@ function setupScene() {
     createCamera();
     createCamera();
 
-    cameras[0].position.set(0, 25, 0);
-    cameras[1].position.set(0, 25, 0);
+    cameras[0].position.set(0, 5, 0);
+    cameras[1].position.set(0, 5, 0);
     cameras[0].rotation.x = THREE.Math.degToRad(-90);
     cameras[1].rotation.x = THREE.Math.degToRad(-90);
 
@@ -81,13 +81,16 @@ function setupScene() {
     $("#scene-section-2").append(renderers[1].domElement);
 }
 
-function createCamera() {
+function createCamera() {/*
     var camera = new THREE.PerspectiveCamera(
         75,
         visibleSize.width / visibleSize.height,
         0.1,
         100
-    );
+    );*/
+    var radio = visibleSize.width / visibleSize.height;
+    var viewSize = 100;
+    var camera = new THREE.OrthographicCamera( -radio*viewSize/4, radio*viewSize/4, viewSize/2, -viewSize/2, 0.1, 2000);
     cameras.push(camera);
 }
 

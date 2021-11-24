@@ -97,8 +97,7 @@ $(document).ready(function () {
 
 function cargarModelos() {
         /***** THREEJS****/
-        dificultad = true;
-
+        
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);

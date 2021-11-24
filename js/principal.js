@@ -114,6 +114,7 @@ function cargarModelos() {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.position.set(0, -50, 34.5);
                 escenario01 = objetoCargado.clone();
+                console.log("01");
         });
 
 
@@ -122,6 +123,8 @@ function cargarModelos() {
                 objetoCargado.rotation.set(-1.5, -3.15, 0);
                 objetoCargado.position.set(-2, -200, 35);
                 escenario02 = objetoCargado.clone();
+                console.log("02");
+
         });
 
         loadOBJWithMTL("assets/", "escena03.obj", "escena03.mtl", (objetoCargado) => {
@@ -129,6 +132,9 @@ function cargarModelos() {
                 objetoCargado.scale.set(9, 10, 9);
                 objetoCargado.position.set(9, -100, 50.6);
                 escenario03 = objetoCargado.clone();
+                console.log("03");
+                isWorldReady = true;
+
         });
 
 
@@ -138,6 +144,8 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_01_P1 = objetoCargado.clone();
                 Obj_01_P2 = objetoCargado.clone();
+                console.log("04");
+
         });
         
         loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
@@ -146,6 +154,8 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_02_P1 = objetoCargado.clone();
                 Obj_02_P2 = objetoCargado.clone();
+                console.log("05");
+
         });
 
         loadOBJWithMTL("assets/collar/", "collar.obj", "collar.mtl", (objetoCargado) => {
@@ -154,6 +164,8 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_03_P1 = objetoCargado.clone();
                 Obj_03_P2 = objetoCargado.clone();
+                console.log("06");
+
         });
 
         loadOBJWithMTL("assets/llave/", "llave.obj", "llave.mtl", (objetoCargado) => {
@@ -162,6 +174,8 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_04_P1 = objetoCargado.clone();
                 Obj_04_P2 = objetoCargado.clone();
+                console.log("07");
+
         });
 
         loadOBJWithMTL("assets/palito/", "palito.obj", "palito.mtl", (objetoCargado) => {
@@ -170,6 +184,8 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_05_P1 = objetoCargado.clone();
                 Obj_05_P2 = objetoCargado.clone();
+                console.log("08");
+
         });
         loadOBJWithMTL("assets/perrito/", "perrito.obj", "perrito.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(2, 2, 2);
@@ -177,7 +193,9 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_06_P1 = objetoCargado.clone();
                 Obj_06_P2 = objetoCargado.clone();
-                isWorldReady = true;
+                
+                console.log("09");
+
         });
 
         render();

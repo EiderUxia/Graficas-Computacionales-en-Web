@@ -55,6 +55,15 @@ var escenario_en_curso = false;
 var cantidasObP1 = 0;
 var cantidasObP2 = 0;
 var dificultad = false;
+var v1 = false;
+var v2 = false;
+var v3 = false;
+var v4 = false;
+var v5 = false;
+var v6 = false;
+var v7 = false;
+var v8 = false;
+var v9 = false;
 /***********************************************************************/
 /***********************************************************************/
 //Objetos

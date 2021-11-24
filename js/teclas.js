@@ -16,15 +16,7 @@ function reiniciarVariables() {
 }
 
 function teclas() {
-    $("#tablita tr").remove();
-    var fila = "<tr><td class='titulo' >" + players[0].name + "</td><td class='titulo'>" + players[0].encontrados + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
-    var btn = document.createElement("TR");
-    btn.innerHTML = fila;
-    var fila2 = "<tr><td class='titulo' >" + players[1].name + "</td><td class='titulo'>" + players[1].encontrados + "</td><td class='titulo'>" + players[1].escena + "</td></tr>";
-    var btn2 = document.createElement("TR");
-    btn2.innerHTML = fila2;
-    document.getElementById("tablita").appendChild(btn);
-    document.getElementById("tablita").appendChild(btn2);
+
 
 
     //Player 1
@@ -51,9 +43,11 @@ function teclas() {
             var colisiones = RCaster.intersectObjects(objetosConColision, true);
 
 
-            if (colisiones.length > 0 && colisiones[0].distance < 50) {
+            if (colisiones.length > 0 && colisiones[0].distance < 500) {
                 console.log("Colisionando! 01");
-                colisiones[0].object.rotation.x = 2;
+                players[0].encontrados = players[0].encontrados + 1;
+                colisiones[0].object.visible = false;
+                cantidasObP1 = cantidasObP1 - 1;
             }
 
         }
@@ -84,9 +78,12 @@ function teclas() {
             var colisiones = RCaster.intersectObjects(objetosConColision2, true);
 
 
-            if (colisiones.length > 0 && colisiones[0].distance < 50) {
+            if (colisiones.length > 0 && colisiones[0].distance < 500) {
                 console.log("Colisionando! 02");
-                colisiones[0].object.rotation.x = 2;
+                players[1].encontrados = players[1].encontrados + 1;
+                colisiones[0].object.visible = false;
+                cantidasObP2 = cantidasObP2 - 1;
+
             }
 
         }

@@ -1,36 +1,152 @@
 function escena01() {
-    /*
-    cameras[0].position.set(31.04, 14.33, -1.76);
-    cameras[0].rotation.y = THREE.Math.degToRad(45);
-    cameras[1].position.set(31.04, 14.33, -1.76);
-    cameras[1].rotation.y = THREE.Math.degToRad(45);
-    players[0].position.set(28.12, 14.33, -4.67);
-    players[1].position.set(28.12, 14.33, -4.67);
-    */
+    $('#scene-section').css("background-image", "url(./assets/forest.jpg)");
+    $('#scene-section-2').css("background-image", "url(./assets/forest.jpg)");
+    /***********************************************************************/
+    /***********************************************************************/
+    //Escenario
+    /***********************************************************************/
+    /***********************************************************************/
+    escenario01.name = "escenario01";
+    var copia = escenario01.clone();
+    copia.name = "escenario01_copia"
+    scene.add(escenario01);
+    scene2.add(copia);
+    cantidasObP1 = 3;
+    cantidasObP2 = 3;
+    /***********************************************************************/
+    /***********************************************************************/
+    //Objetos escena 01
+    /***********************************************************************/
+    /***********************************************************************/
 
+    var obj01_01 = Obj_01_P1.clone();
+    obj01_01.position.x = 5;
+    obj01_01.name = "obj01_01";
 
-    players[0].encontrados = 0;
-    players[1].encontrados = 0;
+    var obj02_01 = Obj_01_P1.clone();
+    obj02_01.position.x = 10;
+    obj02_01.name = "obj02_01";
 
-    players[0].escena = 1;
-    players[1].escena = 1;
+    var obj03_01 = Obj_01_P1.clone();
+    obj03_01.position.x = 15;
+    obj03_01.name = "obj03_01";
 
+    scene.add(obj01_01);
+    scene.add(obj02_01);
+    scene.add(obj03_01);
+    objetosConColision.push(obj01_01);
+    objetosConColision.push(obj02_01);
+    objetosConColision.push(obj03_01);
+    /***********************************************************************/
+    /***********************************************************************/
+    //Objetos escena 02
+    /***********************************************************************/
+    /***********************************************************************/
+    var obj01_02 = Obj_01_P2.clone();
+    obj01_02.position.x = 5;
+    obj01_02.name = "obj01_02";
+
+    scene2.add(obj01_02);
+    objetosConColision2.push(obj01_02);
+    /***********************************************************************/
+    /***********************************************************************/
+    escenario_en_curso = true;
 }
 
 function escena02() {
-    cameras[0].position.set(43.42, 19.78, 27.85);
-    cameras[0].rotation.y = THREE.Math.degToRad(100);
-    cameras[1].position.set(43.42, 19.78, 27.85);
-    cameras[1].rotation.y = THREE.Math.degToRad(100);
-    players[0].position.set(41.08, 19.78, 27.99);
-    players[1].position.set(41.08, 19.78, 27.99);
-    players[0].scale.set(0.5, 0.5, 0.5);
-    players[1].scale.set(0.5, 0.5, 0.5);
+    var Canvas = document.getElementById("contCanvas");
+    var Contenedor = document.getElementById("contenedor");
+    setTimeout(function () {
+        Contenedor.style.visibility = "visible";
+        Contenedor.style.opacity = 1;
+        Canvas.style.visibility = "hidden";
+        Canvas.style.opacity = 0;
+        cargado = false;
+    }, 5);
+    console.log("escena02");
+    entreEscenas();
+    setTimeout(function () {
+        Contenedor.style.visibility = "hidden";
+        Contenedor.style.opacity = 0;
+        Canvas.style.visibility = "visible";
+        Canvas.style.opacity = 1;
+        cargado = true;
+    }, 5000);
+}
 
+function entreEscenas() {
+    $('#scene-section').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
+    $('#scene-section-2').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
+    objetosConColision = [];
+    objetosConColision2 = [];
+    cantidasObP1 = 3;
+    cantidasObP2 = 3;
+    /***********************************************************************/
+    /***********************************************************************/
+    var escenario01 = scene.getObjectByName("escenario01");
+    var ob01_01 = scene.getObjectByName("obj01_01");
+    var ob02_01 = scene.getObjectByName("obj02_01");
+    var ob03_01 = scene.getObjectByName("obj03_01");
+    scene.remove(escenario01);
+    scene.remove(ob01_01);
+    scene.remove(ob02_01);
+    scene.remove(ob03_01);
+    /***********************************************************************/
+    /***********************************************************************/
+    var escenario01_copia = scene2.getObjectByName("escenario01_copia");
+    var obj01_02 = scene.getObjectByName("obj01_02");
+    scene2.remove(escenario01_copia);
+    scene.remove(obj01_02);
+    /***********************************************************************/
+    /***********************************************************************/
+    //Escenario
+    /***********************************************************************/
+    /***********************************************************************/
+    escenario02.name = "escenario02"
+    var copia = escenario02.clone();
+    copia.name = "escenario02_copia"
+    scene.add(escenario02);
+    scene2.add(copia);
+    /***********************************************************************/
+    /***********************************************************************/
+    //Objetos escena 01
+    /***********************************************************************/
+    /***********************************************************************/
 
-    players[0].encontrados = 5;
-    players[1].encontrados = 3;
+    var obj01_01 = Obj_01_P1.clone();
+    obj01_01.position.x = 5;
+    obj01_01.name = "obj01_01";
 
-    players[0].escena = 2;
-    players[1].escena = 2;
+    var obj02_01 = Obj_01_P1.clone();
+    obj02_01.position.x = 10;
+    obj02_01.name = "obj02_01";
+
+    var obj03_01 = Obj_01_P1.clone();
+    obj03_01.position.x = 15;
+    obj03_01.name = "obj03_01";
+
+    scene.add(obj01_01);
+    scene.add(obj02_01);
+    scene.add(obj03_01);
+    objetosConColision.push(obj01_01);
+    objetosConColision.push(obj02_01);
+    objetosConColision.push(obj03_01);
+    /***********************************************************************/
+    /***********************************************************************/
+    //Objetos escena 02
+    /***********************************************************************/
+    /***********************************************************************/
+    var obj01_02 = Obj_01_P2.clone();
+    obj01_02.position.x = 5;
+    obj01_02.name = "obj01_02";
+
+    scene2.add(obj01_02);
+    objetosConColision2.push(obj01_02);
+    /***********************************************************************/
+    /***********************************************************************/
+    escenario_en_curso = true;
+}
+
+function escena03() {
+
 }

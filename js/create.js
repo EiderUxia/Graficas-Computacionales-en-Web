@@ -6,8 +6,8 @@ function setupScene() {
     createCamera();
     createCamera();
 
-    cameras[0].position.set(0, 5, 0);
-    cameras[1].position.set(0, 5, 0);
+    cameras[0].position.set(0, 20, 0);
+    cameras[1].position.set(0, 20, 0);
     cameras[0].rotation.x = THREE.Math.degToRad(-90);
     cameras[1].rotation.x = THREE.Math.degToRad(-90);
 
@@ -44,6 +44,7 @@ function setupScene() {
 
     var player1 = new THREE.Mesh(geometry, material);
     player1.position.y = 10;
+    player1.scale.set(5,5,5);
 
     var player2 = player1.clone();
     player2.material = new THREE.MeshLambertMaterial({
@@ -72,10 +73,6 @@ function setupScene() {
 
     player2.yaw = 0;
     player2.forward = 0;
-
-    //escena01();
-    //escena02();
-    //renderer[1].scene.player2.remove();
 
     $("#scene-section").append(renderers[0].domElement);
     $("#scene-section-2").append(renderers[1].domElement);

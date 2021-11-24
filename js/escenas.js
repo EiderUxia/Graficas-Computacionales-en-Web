@@ -1,5 +1,5 @@
 function escena01() {
-    $('#scene-section').css("background-image", "url(./assets/forest.jpg)");
+    //$('#scene-section').css("background-image", "url(./assets/forest.jpg)");
     $('#scene-section-2').css("background-image", "url(./assets/forest.jpg)");
     /***********************************************************************/
     /***********************************************************************/
@@ -9,7 +9,7 @@ function escena01() {
     escenario01.name = "escenario01";
     var copia = escenario01.clone();
     copia.name = "escenario01_copia"
-    scene.add(escenario01);
+    //scene.add(escenario01);
     scene2.add(copia);
     cantidasObP1 = 3;
     cantidasObP2 = 3;
@@ -112,7 +112,6 @@ function entreEscenas() {
     //Objetos escena 01
     /***********************************************************************/
     /***********************************************************************/
-
     var obj01_01 = Obj_01_P1.clone();
     obj01_01.position.x = 5;
     obj01_01.name = "obj01_01";
@@ -148,5 +147,19 @@ function entreEscenas() {
 }
 
 function escena03() {
-
+    $('#scene-section').css("background-image", "url(./assets/forest.jpg)");
+    $('#scene-section-2').css("background-image", "url(./assets/forest.jpg)");
+    /***********************************************************************/
+    /***********************************************************************/
+    //Escenario
+    /***********************************************************************/
+    /***********************************************************************/
+    escenario03.name = "escenario03";
+    var copia = escenario03.clone();
+    copia.name = "escenario03_copia"
+    scene.add(escenario03);
+    scene2.add(copia);
+    cantidasObP1 = 3;
+    cantidasObP2 = 3;
+    escenario_en_curso = true;
 }

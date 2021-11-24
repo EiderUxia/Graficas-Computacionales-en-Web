@@ -9,7 +9,7 @@ $(document).ready(function () {
         let modal1 = document.getElementById("modal-1");
         cargado = false;
         RCaster = new THREE.Raycaster();
-        /*
+        
                 Bienvenido.style.visibility = "visible";
                 cargarModelos();
                 Contenedor.style.visibility = "hidden";
@@ -17,7 +17,7 @@ $(document).ready(function () {
                 Canvas.style.visibility = "visible";
                 Canvas.style.opacity = 1;
                 cargado = true;
-        */
+        
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
                 var nombre2 = document.getElementById("input2").value;
@@ -113,7 +113,6 @@ function cargarModelos() {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.position.set(0, -50, 34.5);
                 escenario01 = objetoCargado.clone();
-                escenario01_c = objetoCargado.clone();
         });
 
 
@@ -124,6 +123,13 @@ function cargarModelos() {
                 escenario02 = objetoCargado.clone();
         });
 
+        loadOBJWithMTL("assets/", "escena03.obj", "escena03.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(-1.5, -2.5, 0);
+                objetoCargado.scale.set(9, 10, 9);
+                objetoCargado.position.set(9, -100, 50.6);
+                escenario03 = objetoCargado.clone();
+        });
+
 
         loadOBJWithMTL("assets/miniatureCat/", "Miniature_cat_SF.obj", "Miniature_cat_SF.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
@@ -131,13 +137,6 @@ function cargarModelos() {
                 objetoCargado.position.set(0, -20, 0);
                 Obj_01_P1 = objetoCargado.clone();
                 Obj_01_P2 = objetoCargado.clone();
-
-               //scene.add(objetoCargado);
-                //var objetoCargado2 = objetoCargado.clone();
-                //scene2.add(objetoCargado2);
-
-                //objetosConColision.push(objetoCargado);
-                //objetosConColision2.push(objetoCargado2);
                 isWorldReady = true;
         });
 

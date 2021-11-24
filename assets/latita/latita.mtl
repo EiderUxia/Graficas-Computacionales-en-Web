@@ -1,30 +1,18 @@
-# Blender MTL File: 'None'
-# Material Count: 2
-
-newmtl tab
-Ns 179.999996
-Ka 1.000000 1.000000 1.000000
-Kd 0.500000 0.500000 0.500000
-Ks 0.300000 0.300000 0.300000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Bump tuna-can\\source\\tunacan .fbm\\tab_tab_Normal.png
-map_Kd tuna-can\\source\\tunacan .fbm\\tab_tab_BaseColor.png
-map_Ns tuna-can\\source\\tunacan .fbm\\tab_tab_Roughness.png
-refl tuna-can\\source\\tunacan .fbm\\tab_tab_Metallic.png
-
-newmtl tuna_can
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.300000 0.300000 0.300000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Bump tuna-can\\source\\tunacan .fbm\\tunacan _tuna_can_Normal.png
-map_Kd tuna-can\\source\\tunacan .fbm\\tunacan _tuna_can_BaseColor.png
-map_Ns tuna-can\\source\\tunacan .fbm\\tunacan _tuna_can_Roughness.png
-refl tuna-can\\source\\tunacan .fbm\\tunacan _tuna_can_Metallic.png
+newmtl latita:tab
+illum 4
+Kd 1.00 1.00 1.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd tab_tab_BaseColor.png
+Ni 1.45
+Ks 0.30 0.30 0.30
+Ns 180.00
+newmtl latita:tuna_can
+illum 4
+Kd 1.00 1.00 1.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd tunacan__tuna_can_BaseColor.png
+Ni 1.45
+Ks 0.30 0.30 0.30
+Ns 225.00

@@ -139,6 +139,14 @@ function cargarModelos() {
                 Obj_01_P2 = objetoCargado.clone();
                 isWorldReady = true;
         });
+        loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(5, 5, 5);
+                objetoCargado.rotation.set(-1.1, 1.3, 0);
+                objetoCargado.position.set(0, -10, 0);
+                Obj_02_P1 = objetoCargado.clone();
+                Obj_02_P2 = objetoCargado.clone();
+                isWorldReady = true;
+        });
 
         /*
                 loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {

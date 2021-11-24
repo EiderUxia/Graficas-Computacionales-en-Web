@@ -23,7 +23,7 @@ function escena01() {
     obj01_01.position.x = 5;
     obj01_01.name = "obj01_01";
 
-    var obj02_01 = Obj_01_P1.clone();
+    var obj02_01 = Obj_02_P1.clone();
     obj02_01.position.x = 10;
     obj02_01.name = "obj02_01";
 

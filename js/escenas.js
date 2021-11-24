@@ -122,7 +122,7 @@ function escena01() {
         scene2.add(obj06_02);
         objetosConColision2.push(obj06_02);
     }
-    enario_en_curso = true;
+    escenario_en_curso = true;
 }
 
 function escena02() {

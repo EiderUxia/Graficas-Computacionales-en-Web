@@ -1,6 +1,8 @@
 function escena01() {
     $('#scene-section').css("background-image", "url(./assets/forest.jpg)");
     $('#scene-section-2').css("background-image", "url(./assets/forest.jpg)");
+    objetosConColision = [];
+    objetosConColision2 = [];
     /***********************************************************************/
     /***********************************************************************/
     //Escenario
@@ -54,8 +56,8 @@ function escena01() {
     objetosConColision.push(obj04_01);
 
     var obj05_01 = Obj_05_P1.clone();
-    //obj05_01.scale.set(3, 3, 3);
-    obj05_01.position.set(-38, -40, 37);
+    obj05_01.scale.set(3.8, 3.8, 3.8);
+    obj05_01.position.set(-10, 0, 20);
     obj05_01.name = "obj05_01";
     scene.add(obj05_01);
     objetosConColision.push(obj05_01);
@@ -73,7 +75,7 @@ function escena01() {
     /***********************************************************************/
     var obj01_02 = Obj_01_P2.clone();
     obj01_02.scale.set(3, 3, 3);
-    obj01_02.position.set(15, -25, -30);
+    obj01_02.position.set(25, 0, -10);
     obj01_02.name = "obj01_02";
     scene2.add(obj01_02);
     objetosConColision2.push(obj01_02);
@@ -222,37 +224,11 @@ function entreEscenas() {
     scene.add(obj03_01);
     objetosConColision.push(obj03_01);
 
-    var obj04_01 = Obj_04_P1.clone();
-    //obj04_01.scale.set(3, 3, 3);
-    obj04_01.position.set(24, -10, -20);
-    obj04_01.name = "obj04_01";
-    scene.add(obj04_01);
-    objetosConColision.push(obj04_01);
-
-    var obj05_01 = Obj_05_P1.clone();
-    obj05_01.scale.set(3.5, 3.5, 3.5);
-    obj05_01.position.set(5, 0, 35);
-    obj05_01.name = "obj05_01";
-    scene.add(obj05_01);
-    objetosConColision.push(obj05_01);
-
-    var obj06_01 = Obj_06_P1.clone();
-    obj06_01.scale.set(1.5, 1.5, 1.5);
-    obj06_01.position.set(-27, -320, 20);
-    obj06_01.name = "obj06_01";
-    scene.add(obj06_01);
-    objetosConColision.push(obj06_01);
     /***********************************************************************/
     /***********************************************************************/
     //Objetos escena 02
     /***********************************************************************/
     /***********************************************************************/
-    var obj01_02 = Obj_01_P2.clone();
-    obj01_02.scale.set(3, 3, 3);
-    obj01_02.position.set(20, 0, 20);
-    obj01_02.name = "obj01_02";
-    scene2.add(obj01_02);
-    objetosConColision2.push(obj01_02);
 
     var obj02_02 = Obj_02_P2.clone();
     obj02_02.scale.set(3, 3, 3);
@@ -275,22 +251,50 @@ function entreEscenas() {
     scene2.add(obj04_02);
     objetosConColision2.push(obj04_02);
 
-    var obj05_02 = Obj_05_P2.clone();
-    //obj05_02.scale.set(3, 3, 3);
-    obj05_02.position.set(-23, -350, -27);
-    obj05_02.name = "obj05_02";
-    scene2.add(obj05_02);
-    objetosConColision2.push(obj05_02);
-
-    var obj06_02 = Obj_06_P2.clone();
-    obj06_02.scale.set(1.5, 1.5, 1.5);
-    obj06_02.position.set(34, -50, 35);
-    obj06_02.name = "obj06_02";
-    scene2.add(obj06_02);
-    objetosConColision2.push(obj06_02);
     /***********************************************************************/
     /***********************************************************************/
     if (dificultad == true) {
+        var obj01_02 = Obj_01_P2.clone();
+        obj01_02.scale.set(3, 3, 3);
+        obj01_02.position.set(20, 0, 20);
+        obj01_02.name = "obj01_02";
+        scene2.add(obj01_02);
+        objetosConColision2.push(obj01_02);
+
+        var obj05_02 = Obj_05_P2.clone();
+        //obj05_02.scale.set(3, 3, 3);
+        obj05_02.position.set(-23, -350, -27);
+        obj05_02.name = "obj05_02";
+        scene2.add(obj05_02);
+        objetosConColision2.push(obj05_02);
+
+        var obj06_02 = Obj_06_P2.clone();
+        obj06_02.scale.set(1.5, 1.5, 1.5);
+        obj06_02.position.set(34, -50, 35);
+        obj06_02.name = "obj06_02";
+        scene2.add(obj06_02);
+        objetosConColision2.push(obj06_02);
+
+        var obj04_01 = Obj_04_P1.clone();
+        //obj04_01.scale.set(3, 3, 3);
+        obj04_01.position.set(24, -10, -20);
+        obj04_01.name = "obj04_01";
+        scene.add(obj04_01);
+        objetosConColision.push(obj04_01);
+
+        var obj05_01 = Obj_05_P1.clone();
+        obj05_01.scale.set(3.5, 3.5, 3.5);
+        obj05_01.position.set(5, 0, 35);
+        obj05_01.name = "obj05_01";
+        scene.add(obj05_01);
+        objetosConColision.push(obj05_01);
+
+        var obj06_01 = Obj_06_P1.clone();
+        obj06_01.scale.set(1.5, 1.5, 1.5);
+        obj06_01.position.set(-27, -320, 20);
+        obj06_01.name = "obj06_01";
+        scene.add(obj06_01);
+        objetosConColision.push(obj06_01);
 
     }
 
@@ -457,14 +461,14 @@ function entreEscenas3() {
         obj02_02.name = "obj02_02";
         scene2.add(obj02_02);
         objetosConColision2.push(obj02_02);
-    
+
         var obj03_02 = Obj_03_P2.clone();
         obj03_02.scale.set(1.8, 1.8, 1.8);
         obj03_02.position.set(30, 0, 20);
         obj03_02.name = "obj03_02";
         scene2.add(obj03_02);
         objetosConColision2.push(obj03_02);
-    
+
         var obj04_02 = Obj_04_P2.clone();
         obj04_02.scale.set(0.8, 0.8, 0.8);
         obj04_02.position.set(-25, 0, -5);

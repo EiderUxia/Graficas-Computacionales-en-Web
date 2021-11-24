@@ -39,7 +39,7 @@ $(document).ready(function () {
         });
 
         $("#SelecNormal").click(async function () {
-
+                dificultad = false;
                 await setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         });
         $("#SelecDificil").click(async function () {
-
+                dificultad = true;
                 await setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
@@ -97,6 +97,8 @@ $(document).ready(function () {
 
 function cargarModelos() {
         /***** THREEJS****/
+        dificultad = true;
+
         setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
@@ -105,8 +107,8 @@ function cargarModelos() {
         players[1].name = NombreSave2;
         players[0].encontrados = 0;
         players[1].encontrados = 0
-        players[0].escena = 1;
-        players[1].escena = 1;
+        players[0].escena = 2;
+        players[1].escena = 2;
 
         loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);
@@ -134,35 +136,50 @@ function cargarModelos() {
         loadOBJWithMTL("assets/miniatureCat/", "Miniature_cat_SF.obj", "Miniature_cat_SF.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.5, 1.3, 0);
-                objetoCargado.position.set(0, -20, 0);
+                objetoCargado.position.set(0, 0, 0);
                 Obj_01_P1 = objetoCargado.clone();
                 Obj_01_P2 = objetoCargado.clone();
-                isWorldReady = true;
         });
+        
         loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.1, 1.3, 0);
-                objetoCargado.position.set(0, -10, 0);
+                objetoCargado.position.set(0, 0, 0);
                 Obj_02_P1 = objetoCargado.clone();
                 Obj_02_P2 = objetoCargado.clone();
-                isWorldReady = true;
         });
 
-        /*
-                loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
-                        objetoCargado.scale.set(5, 5, 5);
-                        objetoCargado.rotation.set(-1.5, 1.3, 0);
-                        objetoCargado.position.set(0, -20, 0);
-        
-                        scene.add(objetoCargado);
-                        var objetoCargado2 = objetoCargado.clone();
-                        scene2.add(objetoCargado2);
-        
-                        objetosConColision.push(objetoCargado);
-                        objetosConColision2.push(objetoCargado2);
-                        isWorldReady = true;
-                });
-        */
+        loadOBJWithMTL("assets/collar/", "collar.obj", "collar.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(5, 5, 5);
+                objetoCargado.rotation.set(-1.5, 1, 0);
+                objetoCargado.position.set(0, 0, 0);
+                Obj_03_P1 = objetoCargado.clone();
+                Obj_03_P2 = objetoCargado.clone();
+        });
+
+        loadOBJWithMTL("assets/llave/", "llave.obj", "llave.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(1, 1, 1);
+                objetoCargado.rotation.set(0, 1, 0);
+                objetoCargado.position.set(0, 0, 0);
+                Obj_04_P1 = objetoCargado.clone();
+                Obj_04_P2 = objetoCargado.clone();
+        });
+
+        loadOBJWithMTL("assets/palito/", "palito.obj", "palito.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(5, 5, 5);
+                objetoCargado.rotation.set(-1.5, 1, 0);
+                objetoCargado.position.set(0, 0, 0);
+                Obj_05_P1 = objetoCargado.clone();
+                Obj_05_P2 = objetoCargado.clone();
+        });
+        loadOBJWithMTL("assets/perrito/", "perrito.obj", "perrito.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(2, 2, 2);
+                objetoCargado.rotation.set(-1.5, 0, 0);
+                objetoCargado.position.set(0, 0, 0);
+                Obj_06_P1 = objetoCargado.clone();
+                Obj_06_P2 = objetoCargado.clone();
+                isWorldReady = true;
+        });
 
         render();
 }

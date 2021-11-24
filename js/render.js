@@ -59,14 +59,14 @@ function render() {
                                 players[0].escena = 3;
                                 players[1].escena = 3;
                         }
-                }/*
+                }
                 else if (players[1].escena == 3) {
                         if (cantidasObP1 == 0 || cantidasObP2 == 0) {
                                 escenario_en_curso = false;
                                 players[0].escena = 3;
                                 players[1].escena = 3;
                         }
-                }*/
+                }
         }
         /***********************************************************************/
         /***********************************************************************/

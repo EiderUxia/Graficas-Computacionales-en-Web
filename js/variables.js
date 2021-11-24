@@ -54,6 +54,7 @@ var escenario03;
 var escenario_en_curso = false;
 var cantidasObP1 = 0;
 var cantidasObP2 = 0;
+var dificultad = false;
 /***********************************************************************/
 /***********************************************************************/
 //Objetos

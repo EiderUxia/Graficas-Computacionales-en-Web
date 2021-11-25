@@ -555,7 +555,7 @@ body>iframe:first-child {
 	height: 2.5vw;
 	margin-bottom: 2vw;
 	margin-right: 1vw;
-	background: url("Imagenes/Logo_de_configuracion.png");
+	background: url("Imagenes/pausa.png");
 	background-size: cover;
 }
 
@@ -599,20 +599,13 @@ body>iframe:first-child {
 }
 
 #IcMusic {
-	background: url("Imagenes/Logo_de_musica.png");
+	background: url("Imagenes/pause screen.gif");
 	background-size: cover;
-	width: 5vw;
-	height: 5vw;
+	width: 20vw;
+	height: 20vw;
 	margin-right: 5%;
 }
 
-#IcSonido {
-	background: url("Imagenes/Logo_de_sonido.png");
-	background-size: cover;
-	width: 5vw;
-	height: 5vw;
-	margin-right: 5%;
-}
 
 #Musica, #Sonido {
 	text-decoration: none;

@@ -178,19 +178,21 @@ function entreEscenas() {
     /***********************************************************************/
     /***********************************************************************/
     var escenario01_copia = scene2.getObjectByName("escenario01_copia");
-    var obj01_02 = scene.getObjectByName("obj01_02");
-    var obj02_02 = scene.getObjectByName("obj02_02");
-    var obj03_02 = scene.getObjectByName("obj03_02");
-    var obj04_02 = scene.getObjectByName("obj04_02");
-    var obj05_02 = scene.getObjectByName("obj05_02");
-    var obj06_02 = scene.getObjectByName("obj06_02");
+    var ob01_02 = scene.getObjectByName("obj01_02");
+    var ob02_02 = scene.getObjectByName("obj02_02");
+    var ob03_02 = scene.getObjectByName("obj03_02");
+    var ob04_02 = scene.getObjectByName("obj04_02");
+    var ob05_02 = scene.getObjectByName("obj05_02");
+    var ob06_02 = scene.getObjectByName("obj06_02");
     scene2.remove(escenario01_copia);
-    scene2.remove(obj01_02);
-    scene2.remove(obj02_02);
-    scene2.remove(obj03_02);
-    scene2.remove(obj04_02);
-    scene2.remove(obj05_02);
-    scene2.remove(obj06_02);
+    scene2.remove(ob01_02);
+    scene2.remove(ob02_02);
+    scene2.remove(ob03_02);
+    scene2.remove(ob04_02);
+    scene2.remove(ob05_02);
+    scene2.remove(ob06_02);
+
+
     /***********************************************************************/
     /***********************************************************************/
     //Escenario
@@ -481,4 +483,17 @@ function entreEscenas3() {
     }
 
     escenario_en_curso = true;
+}
+
+function escena04() {
+    var Canvas = document.getElementById("contCanvas");
+    var Contenedor = document.getElementById("contenedor");
+    setTimeout(function () {
+        Contenedor.style.visibility = "visible";
+        Contenedor.style.opacity = 1;
+        Canvas.style.visibility = "hidden";
+        Canvas.style.opacity = 0;
+        cargado = false;
+    }, 5);
+    console.log("escena04");
 }

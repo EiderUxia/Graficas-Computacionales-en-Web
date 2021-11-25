@@ -9,7 +9,7 @@ $(document).ready(function () {
         let modal1 = document.getElementById("modal-1");
         cargado = false;
         RCaster = new THREE.Raycaster();
-        
+        /*
                 Bienvenido.style.visibility = "visible";
                 cargarModelos();
                 Contenedor.style.visibility = "hidden";
@@ -17,7 +17,7 @@ $(document).ready(function () {
                 Canvas.style.visibility = "visible";
                 Canvas.style.opacity = 1;
                 cargado = true;
-        
+        */
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
                 var nombre2 = document.getElementById("input2").value;
@@ -115,6 +115,7 @@ function cargarModelos() {
                 objetoCargado.position.set(0, -50, 34.5);
                 escenario01 = objetoCargado.clone();
                 console.log("01");
+                v1 = true;
         });
 
 
@@ -124,6 +125,8 @@ function cargarModelos() {
                 objetoCargado.position.set(-2, -200, 35);
                 escenario02 = objetoCargado.clone();
                 console.log("02");
+                v2 = true;
+
 
         });
 
@@ -134,6 +137,7 @@ function cargarModelos() {
                 escenario03 = objetoCargado.clone();
                 console.log("03");
                 isWorldReady = true;
+                v3 = true;
 
         });
 
@@ -145,6 +149,7 @@ function cargarModelos() {
                 Obj_01_P1 = objetoCargado.clone();
                 Obj_01_P2 = objetoCargado.clone();
                 console.log("04");
+                v4 = true;
 
         });
         
@@ -155,6 +160,7 @@ function cargarModelos() {
                 Obj_02_P1 = objetoCargado.clone();
                 Obj_02_P2 = objetoCargado.clone();
                 console.log("05");
+                v5 = true;
 
         });
 
@@ -165,6 +171,7 @@ function cargarModelos() {
                 Obj_03_P1 = objetoCargado.clone();
                 Obj_03_P2 = objetoCargado.clone();
                 console.log("06");
+                v6 = true;
 
         });
 
@@ -175,6 +182,7 @@ function cargarModelos() {
                 Obj_04_P1 = objetoCargado.clone();
                 Obj_04_P2 = objetoCargado.clone();
                 console.log("07");
+                v7 = true;
 
         });
 
@@ -185,6 +193,7 @@ function cargarModelos() {
                 Obj_05_P1 = objetoCargado.clone();
                 Obj_05_P2 = objetoCargado.clone();
                 console.log("08");
+                v8 = true;
 
         });
         loadOBJWithMTL("assets/perrito/", "perrito.obj", "perrito.mtl", (objetoCargado) => {
@@ -193,7 +202,7 @@ function cargarModelos() {
                 objetoCargado.position.set(0, 0, 0);
                 Obj_06_P1 = objetoCargado.clone();
                 Obj_06_P2 = objetoCargado.clone();
-                
+                v9 = true;
                 console.log("09");
 
         });

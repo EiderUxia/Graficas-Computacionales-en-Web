@@ -33,7 +33,7 @@ function setupScene() {
 
     var grid = new THREE.GridHelper(50, 10, 0xffffff, 0xffffff);
     grid.position.y = -1;
-    scene.add(grid);
+    //scene.add(grid);
     //scene2.add(grid);
 
     var material = new THREE.MeshLambertMaterial({

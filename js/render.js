@@ -32,7 +32,8 @@ function render() {
         //Cambio de escena
         /***********************************************************************/
         /***********************************************************************/
-        if (escenario_en_curso == false && isWorldReady == true) {
+        if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true &&v3 == true &&v4 == true &&
+                v5 == true &&v6 == true &&v7 == true &&v8 == true &&v9 == true ) {
                 if (players[1].escena == 1) {
                         escena01();
                 }
@@ -41,6 +42,9 @@ function render() {
                 }
                 else if (players[1].escena == 3) {
                         escena03();
+                }
+                else if (players[1].escena == 3) {
+                        escena04();
                 }
         }
         else if (escenario_en_curso == true && isWorldReady == true) {
@@ -63,8 +67,8 @@ function render() {
                 else if (players[1].escena == 3) {
                         if (cantidasObP1 == 0 || cantidasObP2 == 0) {
                                 escenario_en_curso = false;
-                                players[0].escena = 3;
-                                players[1].escena = 3;
+                                players[0].escena = 4;
+                                players[1].escena = 4;
                         }
                 }
         }

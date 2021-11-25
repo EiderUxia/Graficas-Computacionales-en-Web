@@ -107,8 +107,8 @@ function cargarModelos() {
         players[1].name = NombreSave2;
         players[0].encontrados = 0;
         players[1].encontrados = 0
-        players[0].escena = 2;
-        players[1].escena = 2;
+        players[0].escena = 1;
+        players[1].escena = 1;
 
         loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);

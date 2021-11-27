@@ -637,7 +637,7 @@ td {
 }
 
 
-/*-------MUSIC PLAYER BY GLENTHEMES-------*/
+/*-------aqui empieza el bongo cat, no le muevan------*/
 #glenplayer02 {
    position:fixed;
    bottom:0;margin-bottom:13px;
@@ -661,13 +661,13 @@ td {
    cursor:pointer;
 }
 
-.playy, .pausee {color:#222;} /* color of play & pause buttons */
+.playy, .pausee {color:#222;} /* botones de pausa */
 
 .pausee {display:none;}
 
 .sonata {
    margin-left:10px;
-   color:#222; /* color of music note symbol */
+   color:#222; /*icono*/
 }
 
 .labeltext {
@@ -680,19 +680,19 @@ td {
 #glentab01 {
    position:fixed;
    bottom:0;margin-bottom:0px;
-   left:0;margin-left:0px; /* position from left of screen */
-   width:230px; /* updates tab width */
+   left:0;margin-left:0px; /* posicion en la pinche pantalla */
+   width:230px; /* ancho*/
 
    z-index:9;}
 #image-holder {
    width:inherit;
-   margin-bottom:-11px; /* bottom value of image */
+   margin-bottom:-11px; /* no tocar*/
 }
 
 #png-image-1, #png-image-2 {
    display:block;
    margin:auto;
-   width:115px; /* both image widths */
+   width:115px; /* no tocar tampoco */
    vertical-align:middle;
    cursor:help;
 }

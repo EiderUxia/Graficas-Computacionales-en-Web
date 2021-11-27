@@ -231,3 +231,5 @@ function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {
 
 }
 
+
+

@@ -555,7 +555,7 @@ body>iframe:first-child {
 	height: 2.5vw;
 	margin-bottom: 2vw;
 	margin-right: 1vw;
-	background: url("Imagenes/Logo_de_configuracion.png");
+	background: url("Imagenes/Logo_de_pausa.png");
 	background-size: cover;
 }
 
@@ -578,15 +578,17 @@ body>iframe:first-child {
 }
 
 #configuracion {
-	width: 50vw;
+	width: 40vw;
 	height: 30vw;
-	z-index: 600;
-	background: rgb(91, 78, 85);
+	z-index: 999;
+	background: #ffe2df;
 	justify-content: center;
-	position: relative;
+	position: absolute;
 	cursor: pointer;
 	border-radius: 15px;
 	border: solid 1.5px;
+	display:block;
+	background-repeat:no-repeat; 
 }
 
 .contenedorConf {
@@ -612,11 +614,15 @@ body>iframe:first-child {
 	width: 5vw;
 	height: 5vw;
 	margin-right: 5%;
+
 }
 
 #Musica, #Sonido {
-	text-decoration: none;
+	text-decoration: transparent;
+	color: transparent;
 	cursor: pointer;
+	text-align: center;
+	z-index: 1;
 }
 
 th {

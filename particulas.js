@@ -1,4 +1,4 @@
-var canvas = document.querySelector("#canvas"),
+var canvas = document.querySelector("canvas"),
 ctx = canvas.getContext('2d');
 
 // Set Canvas to be window size

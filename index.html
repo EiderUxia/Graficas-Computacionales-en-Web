@@ -40,69 +40,47 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+<script>
+$(document).ready(function(){
+   $("#png-image-1, #png-image-2, #glencakes").click(function(){
+       $("#png-image-1").toggleClass("bongo-1");
+       $("#png-image-2").toggleClass("bongo-2");
+       $("#updates-text").slideToggle(80);  
 
-	<!---   Script:    --->
-	<script type="text/javascript">
-
+   });
+});
+</script>
 
 <script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
 <link href="//fonts.googleapis.com/css?family=Public+Sans|Karla" rel="stylesheet">
-<link href="//glenthemes.github.io/-music-/glenplayer03.css" rel="stylesheet">
-<script src="//glenthemes.github.io/-music-/glenplayer03.js"></script>
-<style element="glenplayer03">
-:root {
-    --MusicBox-Left-Or-Right:left;
-    --MusicBox-Edge-Distance:30px;
-    
-    --MusicBox-Width:269px;
-    
-    --MusicBox-Title-Padding:15px;
-    --MusicBox-Title-Background:#222;
-    --MusicBox-Title-Size:10px;
-    --MusicBox-Title-Color:#eee;
-    --MusicBox-Title-Corner-Roundness:8px;
-    
-    --MusicBox-Main-Background:#fff;
-    --MusicBox-Main-Padding:14px;
-    --MusicBox-Side-Borders:#eee;
-    
-    --Album-Art-Size:32px;
-    --Album-Art-Corner-Roundness:3px;
-    --Album-Art-Gap:10px;
-    
-    --Song-Name-Size:9px;
-    --Song-Name-Color:#999;
-    
-    --Artist-Name-Size:10px;
-    --Artist-Name-Color:#444;
-    
-    --Music-Buttons-Size:11px;
-    --Music-Buttons-Color:#222;
-    
-    --Track-Spacing:9px;
-    
-    --Autoplay-First-Song:yes;
-    --Autoplay-Next-Song:yes;
-    --Loop-Playlist-Infinitely:yes;
-}
-</style>
 
-<div glenplayer03>
-    <div musicbox-title>musiquita</div>
-    
-    <!----- SONG #1 ----->
-    <img album-art src="https://i1.sndcdn.com/artworks-jH2vF2uJKwF5-0-t500x500.jpg">
-    
-    <div song-name>NekoAtsume</div>
-    <div artist-name>BGM</div>
-    
-    <audio src="https://cdn.discordapp.com/attachments/879141252631769122/913088534271885362/bgm.mp3"></audio>
-    
-</div><!--end music player -->
-    
+<script src="//static.tumblr.com/gtjt4bo/QRmphdsdv/glenplayer02.js"></script>
 
 
-	</script>
+
+<div id="glentab01">
+   <div id="image-holder">
+   <img id="png-image-1" src="https://cdn.discordapp.com/attachments/879141252631769122/914114891919540254/imagen_1.png">
+   <img id="png-image-2" src="https://cdn.discordapp.com/attachments/879141252631769122/914114380734529606/imagen_2.png">
+   </div>
+
+   <div id="glencakes">
+   <div id="update-title-1">Musiquita</div>
+   
+   </div>
+   <div id="updates-text">
+<div id="glenplayer02">
+    <div class="music-controls" onclick="songstart();">
+        <div class="playy">►</div>
+        <div class="pausee">❚</div>
+    </div>    
+  
+
+</div><!--end music player--> 
+
+<audio id="tune" src="https://cdn.discordapp.com/attachments/879141252631769122/913088534271885362/bgm.mp3" type="audio"></audio>Musiquita con bongo cat</div>
+
+</div><!--end updates tab-->
 
 </head>
 
@@ -130,6 +108,7 @@
 	<div id="contenedor">
 
 
+
 		<!---menu-->
 		<!-- Navbar links -->
 		<div class="navbar">
@@ -144,12 +123,12 @@
 			<button class="tablinks">
 				<span class="emoji"><img src="https://static.tumblr.com/bkdoxe7/Bgyqs5z1p/coin.gif" /></span>
 
-				<a href="/">musica</a>
+				<a href="/">Como jugar</a>
 			</button>
 
-			<button class="tablinks"><span class="emoji">⭐</span><a href="">ajustes</a><span
+			<button class="tablinks"><span class="emoji">⭐</span><a href="">Iniciar sesion</a><span
 					class="number"></span></button>
-			<!---DO NOT REMOVE THE CREDIT.--->
+			
 			<button class="tablinks" id="quit"><a href="/">salir</a></button>
 		</div>
 

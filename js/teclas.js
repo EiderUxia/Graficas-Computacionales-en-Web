@@ -51,7 +51,7 @@ function teclas() {
             }
 
         }
-    }
+    } 
 
 
     //Player 2

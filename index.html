@@ -24,8 +24,14 @@
 
 	<!---   threejs:    --->
 	<script type="text/javascript" src="./js/three/three.js"></script>
-	<script type="text/javascript" src="js/loaders/MTLLoader.js"></script>
-	<script type="text/javascript" src="js/loaders/OBJLoader.js"></script>
+	<script type="text/javascript" src=".js/three/three2.js"></script>
+	<script type="text/javascript" src=".js/loaders/MTLLoader.js"></script>
+	<script type="text/javascript" src=".js/loaders/FBXLoader.js"></script>
+	<script type="text/javascript" src=".js/loaders/OBJLoader.js"></script>
+	<script type="text/javascript" src=".js/three/inflate.min.js"></script>
+
+
+
 
 	<!--- .js: --->
 	<script type="text/javascript" src="./js/principal.js"></script>
@@ -193,6 +199,10 @@ $(document).ready(function(){
 	</div>
 
 	<div id="contCanvas">
+<script>
+$(function(){
+$.firefly();});
+</script>
 
 		<div style="width: 50%" id="scene-section"></div>
 		<div style="flex-grow: 1" id="scene-section-2"></div>
@@ -226,6 +236,7 @@ $(document).ready(function(){
 		<canvas id="c"></canvas>
 
 	</div>
+
 
 
 </body>

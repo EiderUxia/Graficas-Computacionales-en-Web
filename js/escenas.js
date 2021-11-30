@@ -125,9 +125,10 @@ function escena01() {
     escenario_en_curso = true;
 }
 
-function escena02() {
+async function escena02() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
+    
     setTimeout(function () {
         Contenedor.style.visibility = "visible";
         Contenedor.style.opacity = 1;
@@ -135,8 +136,7 @@ function escena02() {
         Canvas.style.opacity = 0;
         cargado = false;
     }, 5);
-    console.log("escena02");
-    entreEscenas();
+    await entreEscenas();
     setTimeout(function () {
         Contenedor.style.visibility = "hidden";
         Contenedor.style.opacity = 0;
@@ -144,9 +144,14 @@ function escena02() {
         Canvas.style.opacity = 1;
         cargado = true;
     }, 5000);
+    
 }
 
 function entreEscenas() {
+    players[0].position.x = 0;
+    players[0].position.z = 0;
+    players[1].position.x = 0;
+    players[1].position.z = 0;
     $('#scene-section').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
     $('#scene-section-2').css("background-image", "url(./assets/traditional-oriental-forest.jpg)");
     objetosConColision = [];
@@ -162,35 +167,44 @@ function entreEscenas() {
     /***********************************************************************/
     /***********************************************************************/
     var escenario01 = scene.getObjectByName("escenario01");
-    var ob01_01 = scene.getObjectByName("obj01_01");
     var ob02_01 = scene.getObjectByName("obj02_01");
     var ob03_01 = scene.getObjectByName("obj03_01");
     var ob04_01 = scene.getObjectByName("obj04_01");
-    var ob05_01 = scene.getObjectByName("obj05_01");
-    var ob06_01 = scene.getObjectByName("obj06_01");
+
     scene.remove(escenario01);
-    scene.remove(ob01_01);
     scene.remove(ob02_01);
     scene.remove(ob03_01);
     scene.remove(ob04_01);
-    scene.remove(ob05_01);
-    scene.remove(ob06_01);
-    /***********************************************************************/
-    /***********************************************************************/
+
     var escenario01_copia = scene2.getObjectByName("escenario01_copia");
-    var ob01_02 = scene.getObjectByName("obj01_02");
-    var ob02_02 = scene.getObjectByName("obj02_02");
-    var ob03_02 = scene.getObjectByName("obj03_02");
-    var ob04_02 = scene.getObjectByName("obj04_02");
-    var ob05_02 = scene.getObjectByName("obj05_02");
-    var ob06_02 = scene.getObjectByName("obj06_02");
+    var ob01_02 = scene2.getObjectByName("obj01_02");
+    var ob02_02 = scene2.getObjectByName("obj02_02");
+    var ob05_02 = scene2.getObjectByName("obj05_02");
+
     scene2.remove(escenario01_copia);
+
     scene2.remove(ob01_02);
     scene2.remove(ob02_02);
-    scene2.remove(ob03_02);
-    scene2.remove(ob04_02);
     scene2.remove(ob05_02);
-    scene2.remove(ob06_02);
+
+
+    if (dificultad == true) {
+        var ob01_01 = scene.getObjectByName("obj01_01");
+        var ob05_01 = scene.getObjectByName("obj05_01");
+        var ob06_01 = scene.getObjectByName("obj06_01");
+
+        scene.remove(ob01_01);
+        scene.remove(ob05_01);
+        scene.remove(ob06_01);
+
+        var ob03_02 = scene2.getObjectByName("obj03_02");
+        var ob04_02 = scene2.getObjectByName("obj04_02");
+        var ob06_02 = scene2.getObjectByName("obj06_02");
+
+        scene2.remove(ob03_02);
+        scene2.remove(ob04_02);
+        scene2.remove(ob06_02);
+    }
 
 
     /***********************************************************************/
@@ -306,7 +320,7 @@ function entreEscenas() {
     escenario_en_curso = true;
 }
 
-function escena03() {
+async function escena03() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     setTimeout(function () {
@@ -316,8 +330,7 @@ function escena03() {
         Canvas.style.opacity = 0;
         cargado = false;
     }, 5);
-    console.log("escena02");
-    entreEscenas3();
+    await entreEscenas3();
     setTimeout(function () {
         Contenedor.style.visibility = "hidden";
         Contenedor.style.opacity = 0;
@@ -346,32 +359,40 @@ function entreEscenas3() {
     var ob01_01 = scene.getObjectByName("obj01_01");
     var ob02_01 = scene.getObjectByName("obj02_01");
     var ob03_01 = scene.getObjectByName("obj03_01");
-    var ob04_01 = scene.getObjectByName("obj04_01");
-    var ob05_01 = scene.getObjectByName("obj05_01");
-    var ob06_01 = scene.getObjectByName("obj06_01");
+
     scene.remove(escenario02);
     scene.remove(ob01_01);
     scene.remove(ob02_01);
     scene.remove(ob03_01);
-    scene.remove(ob04_01);
-    scene.remove(ob05_01);
-    scene.remove(ob06_01);
-    /***********************************************************************/
-    /***********************************************************************/
+
     var escenario02_copia = scene2.getObjectByName("escenario02_copia");
-    var obj01_02 = scene.getObjectByName("obj01_02");
-    var obj02_02 = scene.getObjectByName("obj02_02");
-    var obj03_02 = scene.getObjectByName("obj03_02");
-    var obj04_02 = scene.getObjectByName("obj04_02");
-    var obj05_02 = scene.getObjectByName("obj05_02");
-    var obj06_02 = scene.getObjectByName("obj06_02");
+    var obj02_02 = scene2.getObjectByName("obj02_02");
+    var obj03_02 = scene2.getObjectByName("obj03_02");
+    var obj04_02 = scene2.getObjectByName("obj04_02");
+
     scene2.remove(escenario02_copia);
-    scene2.remove(obj01_02);
     scene2.remove(obj02_02);
     scene2.remove(obj03_02);
     scene2.remove(obj04_02);
-    scene2.remove(obj05_02);
-    scene2.remove(obj06_02);
+
+    if (dificultad == true) {
+        var ob04_01 = scene.getObjectByName("obj04_01");
+        var ob05_01 = scene.getObjectByName("obj05_01");
+        var ob06_01 = scene.getObjectByName("obj06_01");
+
+        scene.remove(ob04_01);
+        scene.remove(ob05_01);
+        scene.remove(ob06_01);
+
+        var obj01_02 = scene2.getObjectByName("obj01_02");
+        var obj05_02 = scene2.getObjectByName("obj05_02");
+        var obj06_02 = scene2.getObjectByName("obj06_02");
+
+        scene2.remove(obj01_02);
+        scene2.remove(obj05_02);
+        scene2.remove(obj06_02);
+    }
+
     /***********************************************************************/
     /***********************************************************************/
     //Escenario

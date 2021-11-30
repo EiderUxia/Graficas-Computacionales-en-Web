@@ -43,7 +43,7 @@ function render() {
                 else if (players[1].escena == 3) {
                         escena03();
                 }
-                else if (players[1].escena == 3) {
+                else if (players[1].escena == 4) {
                         escena04();
                 }
         }

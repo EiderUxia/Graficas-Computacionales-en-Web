@@ -44,7 +44,6 @@ function teclas() {
 
 
             if (colisiones.length > 0 && colisiones[0].distance < 500) {
-                console.log("Colisionando! 01");
                 players[0].encontrados = players[0].encontrados + 1;
                 colisiones[0].object.visible = false;
                 cantidasObP1 = cantidasObP1 - 1;
@@ -79,7 +78,6 @@ function teclas() {
 
 
             if (colisiones.length > 0 && colisiones[0].distance < 500) {
-                console.log("Colisionando! 02");
                 players[1].encontrados = players[1].encontrados + 1;
                 colisiones[0].object.visible = false;
                 cantidasObP2 = cantidasObP2 - 1;

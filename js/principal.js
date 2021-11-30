@@ -40,15 +40,15 @@ $(document).ready(function () {
 
         $("#SelecNormal").click(async function () {
                 dificultad = false;
-                await setTimeout(function () {
+                setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
                         Cargando.style.opacity = 1;
                 }, 500);
-                cargarModelos();
-                await setTimeout(function () {
+                await cargarModelos();
+                setTimeout(function () {
                         Contenedor.style.visibility = "hidden";
                         Contenedor.style.opacity = 0;
                         Canvas.style.visibility = "visible";
@@ -59,16 +59,16 @@ $(document).ready(function () {
         });
         $("#SelecDificil").click(async function () {
                 dificultad = true;
-                await setTimeout(function () {
+                setTimeout(function () {
                         $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
                         Cargando.style.opacity = 1;
                 }, 500);
-                cargarModelos();
+                await cargarModelos();
 
-                await setTimeout(function () {
+                setTimeout(function () {
                         Contenedor.style.visibility = "hidden";
                         Contenedor.style.opacity = 0;
                         Canvas.style.visibility = "visible";
@@ -95,10 +95,10 @@ $(document).ready(function () {
 
 });
 
-function cargarModelos() {
+async function cargarModelos() {
         /***** THREEJS****/
         
-        setupScene();
+        await setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
 
@@ -109,7 +109,7 @@ function cargarModelos() {
         players[0].escena = 1;
         players[1].escena = 1;
 
-        loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.position.set(0, -50, 34.5);
@@ -119,7 +119,7 @@ function cargarModelos() {
         });
 
 
-        loadOBJWithMTL("assets/", "jardin.obj", "jardin.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/", "jardin.obj", "jardin.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(1.7, 3, 8);
                 objetoCargado.rotation.set(-1.5, -3.15, 0);
                 objetoCargado.position.set(-2, -200, 35);
@@ -130,7 +130,7 @@ function cargarModelos() {
 
         });
 
-        loadOBJWithMTL("assets/", "escena03.obj", "escena03.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/", "escena03.obj", "escena03.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.5, -2.5, 0);
                 objetoCargado.scale.set(9, 10, 9);
                 objetoCargado.position.set(9, -100, 50.6);
@@ -142,7 +142,7 @@ function cargarModelos() {
         });
 
 
-        loadOBJWithMTL("assets/miniatureCat/", "Miniature_cat_SF.obj", "Miniature_cat_SF.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/miniatureCat/", "Miniature_cat_SF.obj", "Miniature_cat_SF.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.5, 1.3, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -153,7 +153,7 @@ function cargarModelos() {
 
         });
         
-        loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.1, 1.3, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -164,7 +164,7 @@ function cargarModelos() {
 
         });
 
-        loadOBJWithMTL("assets/collar/", "collar.obj", "collar.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/collar/", "collar.obj", "collar.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.5, 1, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -175,7 +175,7 @@ function cargarModelos() {
 
         });
 
-        loadOBJWithMTL("assets/llave/", "llave.obj", "llave.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/llave/", "llave.obj", "llave.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(1, 1, 1);
                 objetoCargado.rotation.set(0, 1, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -186,7 +186,7 @@ function cargarModelos() {
 
         });
 
-        loadOBJWithMTL("assets/palito/", "palito.obj", "palito.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/palito/", "palito.obj", "palito.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.5, 1, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -196,7 +196,7 @@ function cargarModelos() {
                 v8 = true;
 
         });
-        loadOBJWithMTL("assets/perrito/", "perrito.obj", "perrito.mtl", (objetoCargado) => {
+        await loadOBJWithMTL("assets/perrito/", "perrito.obj", "perrito.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(2, 2, 2);
                 objetoCargado.rotation.set(-1.5, 0, 0);
                 objetoCargado.position.set(0, 0, 0);
@@ -207,7 +207,7 @@ function cargarModelos() {
 
         });
 
-        render();
+        await render();
 }
 
 function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {

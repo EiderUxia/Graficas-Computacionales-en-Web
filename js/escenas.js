@@ -128,7 +128,7 @@ function escena01() {
 async function escena02() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
-    
+
     setTimeout(function () {
         Contenedor.style.visibility = "visible";
         Contenedor.style.opacity = 1;
@@ -144,7 +144,7 @@ async function escena02() {
         Canvas.style.opacity = 1;
         cargado = true;
     }, 5000);
-    
+
 }
 
 function entreEscenas() {
@@ -509,11 +509,24 @@ function entreEscenas3() {
 function escena04() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
+    var Ganador = document.getElementById("Ganador");
+    var Cargando = document.getElementById("Cargando");
+    if (players[0].encontrados > players[1].encontrados) {
+        $("#Felicidades").text("Felicidades " + players[0].name + " por ganar el juego");
+    }else{
+        $("#Felicidades").text("Felicidades " + players[1].name + " por ganar el juego");
+
+    }
+
     setTimeout(function () {
         Contenedor.style.visibility = "visible";
         Contenedor.style.opacity = 1;
+        Ganador.style.visibility = "visible";
+        Ganador.style.opacity = 1;
         Canvas.style.visibility = "hidden";
         Canvas.style.opacity = 0;
+        Cargando.style.visibility = "hidden";
+        Cargando.style.opacity = 0;
         cargado = false;
     }, 5);
     console.log("escena04");

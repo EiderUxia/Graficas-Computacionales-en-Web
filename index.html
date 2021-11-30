@@ -43,6 +43,29 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+<!---   iniciar sesion en fb  --->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <script>
 $(document).ready(function(){
    $("#png-image-1, #png-image-2, #glencakes").click(function(){
@@ -123,7 +146,7 @@ $(document).ready(function(){
 				<a href="/">Como jugar</a>
 			</button>
 
-			<button class="tablinks"><span class="emoji">⭐</span><a href="">Iniciar sesion</a><span
+			<button class="tablinks" onclick="shareFB();"><span class="emoji">⭐</span><a href="">Iniciar sesion</a><span
 					class="number"></span></button>
 			
 			<button class="tablinks" id="quit"><a href="/">salir</a></button>

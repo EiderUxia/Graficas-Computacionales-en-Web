@@ -6,7 +6,7 @@ if($action == "Agregar"){
     addProduct();
 }
 else{
-
+    getProducts();
 }
     function connect(){
             $databasehost = "localhost";
@@ -52,4 +52,24 @@ else{
         //$result->free();
         //disconnect();
     }
+
+    function getProducts() {
+		$mysqli = connect();
+
+		$result = $mysqli->query("SELECT * FROM puntuaciones");	
+		
+		if (!$result) {
+			echo "Problema al hacer un query: " . $mysqli->error;								
+		} else {
+			// Recorremos los resultados devueltos
+			$rows = array();
+			while( $r = $result->fetch_assoc()) {
+				$rows[] = $r;
+			}			
+			// Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			echo json_encode($rows);
+		}
+		//$result->free();
+		//disconnect();	
+	}
 ?>

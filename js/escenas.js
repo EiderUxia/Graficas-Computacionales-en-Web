@@ -507,13 +507,17 @@ function entreEscenas3() {
 }
 
 function escena04() {
+    escenario_en_curso = true;
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     var Ganador = document.getElementById("Ganador");
     var Cargando = document.getElementById("Cargando");
-    if (players[0].encontrados > players[1].encontrados) {
+    if (players[0].encontrados == players[1].encontrados){
+        $("#Felicidades").text("Felicidades " + players[0].name + " y " + players[1].name + " por empatar el juego");
+    }
+    else if (players[0].encontrados > players[1].encontrados) {
         $("#Felicidades").text("Felicidades " + players[0].name + " por ganar el juego");
-    }else{
+    } else {
         $("#Felicidades").text("Felicidades " + players[1].name + " por ganar el juego");
 
     }
@@ -530,4 +534,29 @@ function escena04() {
         cargado = false;
     }, 5);
     console.log("escena04");
+    var puntos = new puntuaciones (players[0].name, players[0].encontrados, players[1].name, players[1].encontrados);
+    var dataToSend = {
+        action: "Agregar",
+        nombre1: puntos.nombreJugador1,
+        puntos1: puntos.puntosJugador1,
+        nombre2: puntos.nombreJugador2,
+        puntos2: puntos.puntosJugador2
+    };
+
+    var objetoEnJSON = JSON.stringify(dataToSend);
+    var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+    $.ajax({
+        url: "webservice/webservice.php",
+        async: true,
+        type: 'POST',
+        data: dataToSend,
+        success: function (data) {
+            alert(data);
+        },
+        error: function (x, y, z) {
+            alert("Error en webservice: " + x + y + z);
+        }
+        //..
+    });
 }

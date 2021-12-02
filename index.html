@@ -166,6 +166,15 @@ $(document).ready(function(){
 			</table>
 		</div>
 
+		<div id="Jugadores">
+			<label class="neon">Seleccione cantidad de jugadores</label>
+			<div id="SelecUnJugador">
+				<p>Solitario</p>
+			</div>
+			<div id="SelecDosJugadores">
+				<p>Parejas disparejas</p>
+			</div>
+		</div>
 
 		<div id="Bienvenido">
 			<p class="neon">Bienvenido</p>
@@ -191,6 +200,32 @@ $(document).ready(function(){
 			<span class="input">
 
 				<input id="input2" type="text" placeholder="Jugador 2" required autocomplete="off"><span></span></span>
+			<button id="btnEnviar">Enviar</button>
+		</div>
+
+		<div id="Bienvenido2">
+			<p class="neon">Bienvenido</p>
+
+			<p class="neon">Por favor inserte su nombre:</p>
+			<div id="cato">
+				<div class="bubble" id="cato"></div>
+				<div class="cato"></div><svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" width="20%" id="blobSvg">
+					<defs>
+						<clipPath id="shape"> 
+							<path id="blob"
+								d="M464.5,279.5Q431,309,441,352.5Q451,396,418.5,416.5Q386,437,354.5,456Q323,475,286.5,452.5Q250,430,211.5,458Q173,486,139.5,467.5Q106,449,79,421.5Q52,394,43.5,357Q35,320,43.5,285Q52,250,37,213Q22,176,53.5,153Q85,130,115.5,118.5Q146,107,167.5,84Q189,61,219.5,61Q250,61,288.5,37Q327,13,354,41.5Q381,70,389,106.5Q397,143,440.5,158.5Q484,174,491,212Q498,250,464.5,279.5Z"
+								fill="#d1d8e0"></path>
+						</clipPath>
+					</defs>
+					<image x="0" y="0" width="100%" height="100%" clip-path="url(#shape)"
+						xlink:href="https://i.imgur.com/4qmiEOV.png" preserveAspectRatio="none"></image>
+			</div></svg>
+			<span class="input">
+
+				<input id="input" type="text" placeholder="Jugador 1" required autocomplete="off"><span></span></span>
+
+
 			<button id="btnEnviar">Enviar</button>
 		</div>
 
@@ -223,6 +258,7 @@ $(document).ready(function(){
 
 		<div style="width: 50%" id="scene-section"></div>
 		<div style="flex-grow: 1" id="scene-section-2"></div>
+	<!-----	<div id="scene-section-3"></div> ------>
 		<div id="config"></div>
 
 		<div id="tabla">

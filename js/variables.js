@@ -3,6 +3,7 @@
 //tamaño de la ventana, scene, camera, render, clock, deltatime
 /***********************************************************************/
 /***********************************************************************/
+var numJugadores;
 var cargado;
 var scene;
 var scene2;

@@ -1,5 +1,7 @@
 $(document).ready(function () {
+        var Jugadores = document.getElementById("Jugadores");
         var Bienvenido = document.getElementById("Bienvenido");
+        var Bienvenido2 = document.getElementById("Bienvenido2");
         var Cargando = document.getElementById("Cargando");
         var Contenedor = document.getElementById("contenedor");
         var Canvas = document.getElementById("contCanvas");
@@ -18,6 +20,16 @@ $(document).ready(function () {
                 Canvas.style.opacity = 1;
                 cargado = true;
         */
+
+        $("#SelecUnJugador").click(function () {
+              numJugadores = 1;
+              UnJugador();
+        });
+
+        $("#SelecDosJugadores").click(function () {
+              numJugadores = 2;
+              DosJugadores();
+        });
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
                 var nombre2 = document.getElementById("input2").value;
@@ -92,12 +104,26 @@ $(document).ready(function () {
                 }, 500);
         });
 
+        function UnJugador(){
+                Jugadores.style.visibility = "hidden";
+                Jugadores.style.opacity = 0;
+                Bienvenido2.style.visibility = "visible";
+                Bienvenido2.style.opacity = 1;
+        }
+
+        function DosJugadores(){
+                Jugadores.style.visibility = "hidden";
+                Jugadores.style.opacity = 0;
+                Bienvenido.style.visibility = "visible";
+                Bienvenido.style.opacity = 1;
+        }
+
 
 });
 
 async function cargarModelos() {
         /***** THREEJS****/
-        
+
         await setupScene();
         document.addEventListener("keydown", onKeyDown);
         document.addEventListener("keyup", onKeyUp);
@@ -152,7 +178,7 @@ async function cargarModelos() {
                 v4 = true;
 
         });
-        
+
         await loadOBJWithMTL("assets/latita/", "latita.obj", "latita.mtl", (objetoCargado) => {
                 objetoCargado.scale.set(5, 5, 5);
                 objetoCargado.rotation.set(-1.1, 1.3, 0);

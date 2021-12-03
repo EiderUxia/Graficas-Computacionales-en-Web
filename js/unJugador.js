@@ -177,7 +177,7 @@ function render2() {
     /***********************************************************************/
     reiniciarVariables();
 
-    actualizarRenderer();
+    actualizarRenderer2();
 
     if (cargado == true) {
             teclas2();
@@ -187,6 +187,17 @@ function render2() {
 
     renderers[0].render(scene, cameras[0]);
 
+}
+
+function actualizarRenderer2() {
+    for (var i = 0; i < renderers.length; i++) {
+            renderers[i].setPixelRatio(visibleSize.width / visibleSize.height);
+            renderers[i].setSize(visibleSize.width, visibleSize.height);
+    }
+    visibleSize = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+    };
 }
 
 /*************************************************************************************/

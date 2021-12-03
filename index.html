@@ -65,7 +65,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-
+<!---bongocat--->
 <script>
 $(document).ready(function(){
    $("#png-image-1, #png-image-2, #glencakes").click(function(){
@@ -75,6 +75,19 @@ $(document).ready(function(){
 
    });
 });
+</script>
+
+<!--- tabs-->
+
+<script>
+function openCity(cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(cityName).style.display = "block";  
+}
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
@@ -89,6 +102,8 @@ $(document).ready(function(){
 </head>
 
 <body>
+
+
 	<div id="glentab01">
    <div id="image-holder">
    <img id="png-image-1" src="https://cdn.discordapp.com/attachments/879141252631769122/914114891919540254/imagen_1.png">
@@ -140,12 +155,14 @@ $(document).ready(function(){
 				<p>puntajes</p>
 			</button>
 
-			<button class="tablinks">
+			<button class="tablinks" onclick="openCity('instructivo')">
 				<span class="emoji">🕹️</span>
 
-				<a href="/">Como jugar</a>
+				<div id="instructivo" class="tablinks" style="display:none">
+					<h2>Como jugar</h2>
+  <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+</div>
 			</button>
-
 			<button class="tablinks" onclick="shareFB();"><span class="emoji">⭐</span><a href="">Iniciar sesion</a><span
 					class="number"></span></button>
 			

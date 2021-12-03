@@ -22,13 +22,30 @@ $(document).ready(function () {
         */
 
         $("#SelecUnJugador").click(function () {
-              numJugadores = 1;
-              UnJugador();
+                numJugadores = 1;
+                UnJugador();
+                var sc1 = document.getElementById("scene-section");
+                var sc2 = document.getElementById("scene-section-2");
+                /*
+                sc1.style.visibility = "hidden";
+                sc1.style.opacity = 0;
+                sc2.style.visibility = "hidden";
+                sc2.style.opacity = 0;
+                */
+                sc1.remove();
+                sc2.remove();
         });
 
         $("#SelecDosJugadores").click(function () {
-              numJugadores = 2;
-              DosJugadores();
+                numJugadores = 2;
+                DosJugadores();
+                var sc3 = document.getElementById("scene-section-3");
+                /*
+                sc3.style.visibility = "hidden";
+                sc3.style.opacity = 0;
+*/
+                sc3.remove();
+
         });
         $("#btnEnviar").click(function () {
                 var nombre = document.getElementById("input").value;
@@ -50,10 +67,28 @@ $(document).ready(function () {
                 }
         });
 
+        $("#btnEnviar2").click(function () {
+                var nombre = document.getElementById("input3").value;
+                if (nombre != "") {
+
+                        Bienvenido2.style.visibility = "hidden";
+                        Bienvenido2.style.opacity = 0;
+                        Dificultad.style.visibility = "visible";
+                        Dificultad.style.opacity = 1;
+                        NombreSave = nombre;
+                } else {
+                        alert("Favor de insertar su nombre");
+                }
+        });
+
         $("#SelecNormal").click(async function () {
                 dificultad = false;
                 setTimeout(function () {
-                        $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
+                        if (numJugadores == 1) {
+                                $("#Saludo").text("Hola " + NombreSave);
+                        } else {
+                                $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
+                        }
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
@@ -72,7 +107,11 @@ $(document).ready(function () {
         $("#SelecDificil").click(async function () {
                 dificultad = true;
                 setTimeout(function () {
-                        $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
+                        if (numJugadores == 1) {
+                                $("#Saludo").text("Hola " + NombreSave);
+                        } else {
+                                $("#Saludo").text("Hola " + NombreSave + " y " + NombreSave2);
+                        }
                         Dificultad.style.visibility = "hidden";
                         Dificultad.style.opacity = 0;
                         Cargando.style.visibility = "visible";
@@ -104,14 +143,14 @@ $(document).ready(function () {
                 }, 500);
         });
 
-        function UnJugador(){
+        function UnJugador() {
                 Jugadores.style.visibility = "hidden";
                 Jugadores.style.opacity = 0;
                 Bienvenido2.style.visibility = "visible";
                 Bienvenido2.style.opacity = 1;
         }
 
-        function DosJugadores(){
+        function DosJugadores() {
                 Jugadores.style.visibility = "hidden";
                 Jugadores.style.opacity = 0;
                 Bienvenido.style.visibility = "visible";
@@ -123,17 +162,26 @@ $(document).ready(function () {
 
 async function cargarModelos() {
         /***** THREEJS****/
+        if (numJugadores == 2) {
+                await setupScene();
+                document.addEventListener("keydown", onKeyDown);
+                document.addEventListener("keyup", onKeyUp);
 
-        await setupScene();
-        document.addEventListener("keydown", onKeyDown);
-        document.addEventListener("keyup", onKeyUp);
-
-        players[0].name = NombreSave;
-        players[1].name = NombreSave2;
-        players[0].encontrados = 0;
-        players[1].encontrados = 0
-        players[0].escena = 1;
-        players[1].escena = 1;
+                players[0].name = NombreSave;
+                players[1].name = NombreSave2;
+                players[0].encontrados = 0;
+                players[1].encontrados = 0
+                players[0].escena = 1;
+                players[1].escena = 1;
+        }
+        else {
+                await setupScene2();
+                document.addEventListener("keydown", onKeyDown2);
+                document.addEventListener("keyup", onKeyUp2);
+                players[0].name = NombreSave;
+                players[0].encontrados = 0;
+                players[0].escena = 1;
+        }
 
         await loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);
@@ -232,8 +280,14 @@ async function cargarModelos() {
                 console.log("09");
 
         });
+        if (numJugadores == 1) {
+                await render2();
+        }
+        else {
+                await render();
+        }
 
-        await render();
+
 }
 
 function loadOBJWithMTL(path, objFile, mtlFile, onLoadCallback) {

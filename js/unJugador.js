@@ -37,9 +37,10 @@ function setupScene2() {
 
 
     player1.rayos = [
-            new THREE.Vector3(0, 1, 0),
-            new THREE.Vector3(0, -1, 0)
-
+        new THREE.Vector3(0, 0, 1),
+        new THREE.Vector3(0, 0, -1),
+        new THREE.Vector3(1, 0, 0),
+        new THREE.Vector3(-1, 0, 0)
     ];
 
     scene.add(player1);

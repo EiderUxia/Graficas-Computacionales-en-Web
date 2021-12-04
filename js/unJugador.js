@@ -10,14 +10,14 @@ function setupScene2() {
     createRenderer(new THREE.Color(0, 0, 0));
 
     var ambientLight = new THREE.AmbientLight(
-            new THREE.Color(1, 1, 1),
-            1.0
+        new THREE.Color(1, 1, 1),
+        1.0
     );
     scene.add(ambientLight);
 
     var directionalLight = new THREE.DirectionalLight(
-            new THREE.Color(1, 1, 0),
-            0.4
+        new THREE.Color(1, 1, 0),
+        0.4
     );
     directionalLight.position.set(0, 0, 1);
     scene.add(directionalLight);
@@ -27,20 +27,18 @@ function setupScene2() {
     scene.add(grid);
 
     var material = new THREE.MeshLambertMaterial({
-            color: new THREE.Color(0.5, 0.0, 0.0),
+        color: new THREE.Color(0.5, 0.0, 0.0),
     });
     var geometry = new THREE.BoxGeometry(1, 1, 1);
 
     var player1 = new THREE.Mesh(geometry, material);
     player1.position.y = 10;
-    player1.scale.set(5,5,5);
+    player1.scale.set(5, 5, 5);
 
 
     player1.rayos = [
-        new THREE.Vector3(0, 0, 1),
-        new THREE.Vector3(0, 0, -1),
-        new THREE.Vector3(1, 0, 0),
-        new THREE.Vector3(-1, 0, 0)
+        new THREE.Vector3(0, 1, 0),
+        new THREE.Vector3(0, -1, 0),
     ];
 
     scene.add(player1);
@@ -56,7 +54,7 @@ function setupScene2() {
 function createCamera2() {
     var radio = visibleSize.width / visibleSize.height;
     var viewSize = 100;
-    var camera = new THREE.OrthographicCamera( -radio*viewSize/2, radio*viewSize/2, viewSize/2, -viewSize/2, 0.1, 2000);
+    var camera = new THREE.OrthographicCamera(-radio * viewSize / 2, radio * viewSize / 2, viewSize / 2, -viewSize / 2, 0.1, 2000);
     cameras.push(camera);
 }
 /*************************************************************************************/
@@ -106,7 +104,7 @@ function teclas2() {
             }
 
         }
-    } 
+    }
 
 }
 
@@ -115,7 +113,38 @@ function teclas2() {
 /**********************************    Render    *************************************/
 /*************************************************************************************/
 /*************************************************************************************/
+var timer;
+var totalTimePera = 0;
 
+function Position() {
+    signo1 = Math.random();
+    if (signo1 > 0.5) {
+        sig1 = 1;
+    }
+    else {
+        sig1 = -1;
+    }
+
+    signo2 = Math.random();
+    if (signo2 > 0.5) {
+        sig2 = 1;
+    }
+    else {
+        sig2 = -1;
+    }
+
+    x = Math.random() * 100;
+    if (x > 50) {
+        x = x - 50;
+    }
+    x = x * sig1;
+
+    z = Math.random() * 100;
+    if (z > 50) {
+        z = z - 50;
+    }
+    z = z * sig2;
+}
 function render2() {
     requestAnimationFrame(render2);
     deltaTime = clock.getDelta();
@@ -130,48 +159,72 @@ function render2() {
     var btn = document.createElement("TR");
     btn.innerHTML = fila;
     document.getElementById("tablita").appendChild(btn);
+    fila = "<tr><td class='titulo' >" + "totalTimePera" + "</td><td class='titulo'>" + totalTimePera + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
+    btn = document.createElement("TR");
+    btn.innerHTML = fila;
+    document.getElementById("tablita").appendChild(btn);
+
+    /***********************************************************************/
+    /***********************************************************************/
+    //Objetos especiales
+    /***********************************************************************/
+    /***********************************************************************/
+    totalTimePera += 1;
+    if (totalTimePera % 100 == 0) {
+        Position();
+        var pera = Obj_Esp02.clone();
+        pera.position.x = x;
+        pera.position.z = z;
+        console.log("X: " + x + " Z: " + z);
+        setTimeout(() => {
+            scene.remove(pera);
+        }, 3000);
+        peras.push(pera);
+        scene.add(pera);
+    }
+
     /***********************************************************************/
     /***********************************************************************/
     //Cambio de escena
     /***********************************************************************/
     /***********************************************************************/
-   
-    if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true &&v3 == true &&v4 == true &&
-            v5 == true &&v6 == true &&v7 == true &&v8 == true &&v9 == true ) {
-            if (players[0].escena == 1) {
-                    escena01_2();
-            }
-            else if (players[0].escena == 2) {
-                    escena02_2();
-            }
-            else if (players[0].escena == 3) {
-                    escena03_2();
-            }
-            else if (players[0].escena == 4) {
-                    escena04_2();
-            }
+
+    if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true && v3 == true && v4 == true &&
+        v5 == true && v6 == true && v7 == true && v8 == true && v9 == true) {
+        if (players[0].escena == 1) {
+            escena01_2();
+        }
+        else if (players[0].escena == 2) {
+            escena02_2();
+        }
+        else if (players[0].escena == 3) {
+            escena03_2();
+        }
+        else if (players[0].escena == 4) {
+            escena04_2();
+        }
     }
     else if (escenario_en_curso == true && isWorldReady == true) {
 
-            if (players[0].escena == 1) {
+        if (players[0].escena == 1) {
 
-                    if (cantidasObP1 == 0) {
-                            escenario_en_curso = false;
-                            players[0].escena = 2;
-                    }
+            if (cantidasObP1 == 0) {
+                escenario_en_curso = false;
+                players[0].escena = 2;
             }
-            else if (players[0].escena == 2) {
-                    if (cantidasObP1 == 0) {
-                            escenario_en_curso = false;
-                            players[0].escena = 3;
-                    }
+        }
+        else if (players[0].escena == 2) {
+            if (cantidasObP1 == 0) {
+                escenario_en_curso = false;
+                players[0].escena = 3;
             }
-            else if (players[0].escena == 3) {
-                    if (cantidasObP1 == 0) {
-                            escenario_en_curso = false;
-                            players[0].escena = 4;
-                    }
+        }
+        else if (players[0].escena == 3) {
+            if (cantidasObP1 == 0) {
+                escenario_en_curso = false;
+                players[0].escena = 4;
             }
+        }
     }
     /***********************************************************************/
     /***********************************************************************/
@@ -182,24 +235,25 @@ function render2() {
     actualizarRenderer2();
 
     if (cargado == true) {
-        ObjetosEspeciales();
-            teclas2();
+        teclas2();
     }
 
     movimiento();
 
+
     renderers[0].render(scene, cameras[0]);
+
 
 }
 
 function actualizarRenderer2() {
     for (var i = 0; i < renderers.length; i++) {
-            renderers[i].setPixelRatio(visibleSize.width / visibleSize.height);
-            renderers[i].setSize(visibleSize.width, visibleSize.height);
+        renderers[i].setPixelRatio(visibleSize.width / visibleSize.height);
+        renderers[i].setSize(visibleSize.width, visibleSize.height);
     }
     visibleSize = {
-            width: window.innerWidth,
-            height: window.innerHeight,
+        width: window.innerWidth,
+        height: window.innerHeight,
     };
 }
 
@@ -211,6 +265,7 @@ function actualizarRenderer2() {
 
 function escena01_2() {
     escenario_en_curso = true;
+    totalTimePera = 0;
     $('#scene-section-3').css("background-image", "url(./assets/forest.jpg)");
     objetosConColision = [];
     /***********************************************************************/
@@ -277,13 +332,14 @@ function escena01_2() {
         scene.add(obj06_01);
         objetosConColision.push(obj06_01);
     }
-   
+
 }
 
 async function escena02_2() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     escenario_en_curso = true;
+    totalTimePera = 0;
     setTimeout(function () {
         Contenedor.style.visibility = "visible";
         Contenedor.style.opacity = 1;
@@ -373,7 +429,7 @@ function entreEscenas_2() {
     /***********************************************************************/
     /***********************************************************************/
     if (dificultad == true) {
-               var obj04_01 = Obj_04_P1.clone();
+        var obj04_01 = Obj_04_P1.clone();
         //obj04_01.scale.set(3, 3, 3);
         obj04_01.position.set(24, -10, -20);
         obj04_01.name = "obj04_01";
@@ -400,6 +456,7 @@ function entreEscenas_2() {
 
 async function escena03_2() {
     escenario_en_curso = true;
+    totalTimePera = 0;
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     setTimeout(function () {
@@ -513,6 +570,7 @@ function entreEscenas3_2() {
 }
 
 function escena04_2() {
+    totalTimePera = 0;
     escenario_en_curso = true;
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
@@ -532,7 +590,7 @@ function escena04_2() {
         cargado = false;
     }, 5);
     console.log("escena04");
-    var punto = new puntos (players[0].name, players[0].encontrados);
+    var punto = new puntos(players[0].name, players[0].encontrados);
     var dataToSend = {
         action: "Agregar1",
         nombre: punto.nombre,
@@ -557,7 +615,7 @@ function escena04_2() {
     });
 }
 
-function ObjetosEspeciales(){
+function ObjetosEspeciales() {
     Obj_Esp01.name = "Obj_Esp01";
     scene.add(Obj_Esp01);
 

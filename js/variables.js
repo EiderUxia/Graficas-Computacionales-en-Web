@@ -33,6 +33,8 @@ var Canvas = document.getElementById("c");
 var renderers = [];
 var cameras = [];
 var players = [];
+var peras = [];
+var jugetes = [];
 /***********************************************************************/
 /***********************************************************************/
 //Datos jugadores
@@ -88,3 +90,9 @@ var Obj_06_P2;
 var Obj_Esp01;
 var Obj_Esp02;
 var GatoPan;
+var sig1;
+var sig2;
+var signo1;
+var signo2;
+var x;
+var z;

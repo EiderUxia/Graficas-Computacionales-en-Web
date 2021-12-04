@@ -195,6 +195,13 @@ async function cargarModelos() {
                 Obj_Esp02 = objetoCargado.clone();
                 console.log("Obj_Esp02");
         });
+        await loadOBJWithMTL("assets/tercer_objeto/", "gatopan.obj", "gatopan.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(-1.3, 0, 0);
+                objetoCargado.scale.set(1, 1, 1);
+                objetoCargado.position.set(1, 5, 1);
+                GatoPan = objetoCargado.clone();
+                console.log("GatoPan");
+        });
         await loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);
                 objetoCargado.scale.set(5, 5, 5);

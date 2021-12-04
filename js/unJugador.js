@@ -562,4 +562,7 @@ function ObjetosEspeciales(){
 
     Obj_Esp02.name = "Obj_Esp02";
     scene.add(Obj_Esp02);
+
+    GatoPan.name = "GatoPan";
+    scene.add(GatoPan);
 }

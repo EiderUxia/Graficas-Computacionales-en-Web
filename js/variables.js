@@ -87,3 +87,4 @@ var Obj_06_P2;
 // Especiales
 var Obj_Esp01;
 var Obj_Esp02;
+var GatoPan;

@@ -24,7 +24,7 @@ function setupScene2() {
 
     var grid = new THREE.GridHelper(50, 10, 0xffffff, 0xffffff);
     grid.position.y = -1;
-    //scene.add(grid);
+    scene.add(grid);
 
     var material = new THREE.MeshLambertMaterial({
             color: new THREE.Color(0.5, 0.0, 0.0),
@@ -134,6 +134,7 @@ function render2() {
     //Cambio de escena
     /***********************************************************************/
     /***********************************************************************/
+   
     if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true &&v3 == true &&v4 == true &&
             v5 == true &&v6 == true &&v7 == true &&v8 == true &&v9 == true ) {
             if (players[0].escena == 1) {
@@ -180,6 +181,7 @@ function render2() {
     actualizarRenderer2();
 
     if (cargado == true) {
+        ObjetosEspeciales();
             teclas2();
     }
 
@@ -552,4 +554,12 @@ function escena04_2() {
         }
         //..
     });
+}
+
+function ObjetosEspeciales(){
+    Obj_Esp01.name = "Obj_Esp01";
+    scene.add(Obj_Esp01);
+
+    Obj_Esp02.name = "Obj_Esp02";
+    scene.add(Obj_Esp02);
 }

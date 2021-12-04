@@ -182,7 +182,19 @@ async function cargarModelos() {
                 players[0].encontrados = 0;
                 players[0].escena = 1;
         }
-
+        await loadOBJWithMTL("assets/hierba/", "hierba.obj", "hierba.mtl", (objetoCargado) => {
+                objetoCargado.scale.set(.25, .25, .25);
+                objetoCargado.position.set(1, 1, 1);
+                Obj_Esp01 = objetoCargado.clone();
+                console.log("Obj_Esp01");
+        });
+        await loadOBJWithMTL("assets/pera/", "Pear_Low.obj", "Pear_Low.mtl", (objetoCargado) => {
+                objetoCargado.rotation.set(-1.3, 0, 0);
+                objetoCargado.scale.set(.25, .25, .25);
+                objetoCargado.position.set(1, 1, 1);
+                Obj_Esp02 = objetoCargado.clone();
+                console.log("Obj_Esp02");
+        });
         await loadOBJWithMTL("assets/", "casa.obj", "casa.mtl", (objetoCargado) => {
                 objetoCargado.rotation.set(-1.3, 0, 0);
                 objetoCargado.scale.set(5, 5, 5);

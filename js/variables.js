@@ -84,3 +84,6 @@ var Obj_03_P2;
 var Obj_04_P2;
 var Obj_05_P2;
 var Obj_06_P2;
+// Especiales
+var Obj_Esp01;
+var Obj_Esp02;

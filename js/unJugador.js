@@ -113,8 +113,7 @@ function teclas2() {
 /**********************************    Render    *************************************/
 /*************************************************************************************/
 /*************************************************************************************/
-var timer;
-var totalTimePera = 0;
+var totalTime = 0;
 
 function Position() {
     signo1 = Math.random();
@@ -159,7 +158,7 @@ function render2() {
     var btn = document.createElement("TR");
     btn.innerHTML = fila;
     document.getElementById("tablita").appendChild(btn);
-    fila = "<tr><td class='titulo' >" + "totalTimePera" + "</td><td class='titulo'>" + totalTimePera + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
+    fila = "<tr><td class='titulo' >" + "totalTime" + "</td><td class='titulo'>" + totalTime + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
     btn = document.createElement("TR");
     btn.innerHTML = fila;
     document.getElementById("tablita").appendChild(btn);
@@ -169,18 +168,69 @@ function render2() {
     //Objetos especiales
     /***********************************************************************/
     /***********************************************************************/
-    totalTimePera += 1;
-    if (totalTimePera % 100 == 0) {
+    totalTime += 1;
+    if (totalTime % 100 == 0) {
         Position();
         var pera = Obj_Esp02.clone();
         pera.position.x = x;
         pera.position.z = z;
-        console.log("X: " + x + " Z: " + z);
         setTimeout(() => {
             scene.remove(pera);
-        }, 3000);
+        }, 5000);
         peras.push(pera);
         scene.add(pera);
+    }
+
+    for (var i = 0; i < players[0].rayos.length; i++) {
+
+        var rayo = players[0].rayos[i];
+
+        //1er parametro desde que punto va a ser lanzado el rayo o vector
+        //2do parametro es el rayo o vector
+        RCaster.set(players[0].position, rayo);
+
+        //Detectar la colision de 1 objeto que se pone dentro de ()
+        //true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
+        var colisiones = RCaster.intersectObjects(peras, true);
+
+
+        if (colisiones.length > 0 && colisiones[0].distance < 500) {
+            players[0].encontrados = players[0].encontrados + 3;
+            colisiones[0].object.visible = false;
+        }
+
+    }
+
+    if (totalTime % 300 == 0) {
+        Position();
+        var GP = GatoPan.clone();
+        GP.position.x = x;
+        GP.position.z = z;
+        setTimeout(() => {
+            scene.remove(GP);
+        }, 5000);
+        jugetes.push(GP);
+        scene.add(GP);
+    }
+
+    for (var i = 0; i < players[0].rayos.length; i++) {
+
+        var rayo = players[0].rayos[i];
+
+        //1er parametro desde que punto va a ser lanzado el rayo o vector
+        //2do parametro es el rayo o vector
+        RCaster.set(players[0].position, rayo);
+
+        //Detectar la colision de 1 objeto que se pone dentro de ()
+        //true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
+        var colisiones = RCaster.intersectObjects(jugetes, true);
+
+
+        if (colisiones.length > 0 && colisiones[0].distance < 500) {
+            players[0].encontrados = players[0].encontrados + 5;
+            colisiones[0].object.visible = false;
+        }
+
     }
 
     /***********************************************************************/
@@ -265,7 +315,7 @@ function actualizarRenderer2() {
 
 function escena01_2() {
     escenario_en_curso = true;
-    totalTimePera = 0;
+    totalTime = 0;
     $('#scene-section-3').css("background-image", "url(./assets/forest.jpg)");
     objetosConColision = [];
     /***********************************************************************/
@@ -339,7 +389,7 @@ async function escena02_2() {
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     escenario_en_curso = true;
-    totalTimePera = 0;
+    totalTime = 0;
     setTimeout(function () {
         Contenedor.style.visibility = "visible";
         Contenedor.style.opacity = 1;
@@ -456,7 +506,7 @@ function entreEscenas_2() {
 
 async function escena03_2() {
     escenario_en_curso = true;
-    totalTimePera = 0;
+    totalTime = 0;
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");
     setTimeout(function () {
@@ -570,7 +620,7 @@ function entreEscenas3_2() {
 }
 
 function escena04_2() {
-    totalTimePera = 0;
+    totalTime = 0;
     escenario_en_curso = true;
     var Canvas = document.getElementById("contCanvas");
     var Contenedor = document.getElementById("contenedor");

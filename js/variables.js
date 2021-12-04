@@ -33,8 +33,6 @@ var Canvas = document.getElementById("c");
 var renderers = [];
 var cameras = [];
 var players = [];
-var peras = [];
-var jugetes = [];
 /***********************************************************************/
 /***********************************************************************/
 //Datos jugadores
@@ -45,6 +43,8 @@ var NombreSave2;
 var RCaster;
 var objetosConColision = [];
 var objetosConColision2 = [];
+var peras = [];
+var jugetes = [];
 /***********************************************************************/
 /***********************************************************************/
 //Escenarios

@@ -113,6 +113,22 @@ function teclas2() {
 /**********************************    Render    *************************************/
 /*************************************************************************************/
 /*************************************************************************************/
+function tablaDatos() {
+    /***********************************************************************/
+    /***********************************************************************/
+    //Datos jugadores
+    /***********************************************************************/
+    /***********************************************************************/
+    $("#tablita tr").remove();
+    var fila = "<tr><td class='titulo' >" + players[0].name + "</td><td class='titulo'>" + players[0].encontrados + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
+    var btn = document.createElement("TR");
+    btn.innerHTML = fila;
+    document.getElementById("tablita").appendChild(btn);
+    fila = "<tr><td class='titulo' >" + "totalTime" + "</td><td class='titulo'>" + totalTime + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
+    btn = document.createElement("TR");
+    btn.innerHTML = fila;
+    document.getElementById("tablita").appendChild(btn);
+}
 var totalTime = 0;
 
 function Position() {
@@ -144,25 +160,7 @@ function Position() {
     }
     z = z * sig2;
 }
-function render2() {
-    requestAnimationFrame(render2);
-    deltaTime = clock.getDelta();
-
-    /***********************************************************************/
-    /***********************************************************************/
-    //Datos jugadores
-    /***********************************************************************/
-    /***********************************************************************/
-    $("#tablita tr").remove();
-    var fila = "<tr><td class='titulo' >" + players[0].name + "</td><td class='titulo'>" + players[0].encontrados + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
-    var btn = document.createElement("TR");
-    btn.innerHTML = fila;
-    document.getElementById("tablita").appendChild(btn);
-    fila = "<tr><td class='titulo' >" + "totalTime" + "</td><td class='titulo'>" + totalTime + "</td><td class='titulo'>" + players[0].escena + "</td></tr>";
-    btn = document.createElement("TR");
-    btn.innerHTML = fila;
-    document.getElementById("tablita").appendChild(btn);
-
+function suma() {
     /***********************************************************************/
     /***********************************************************************/
     //Objetos especiales
@@ -217,7 +215,7 @@ function render2() {
         if (colisiones2.length > 0 && colisiones2[0].distance < 500) {
             players[0].encontrados = players[0].encontrados + 5;
             colisiones2[0].object.parent.activo = false;
-            colisiones[0].object.visible = false;
+            colisiones2[0].object.visible = false;
             scene.remove(colisiones2[0].object);
 
         }
@@ -239,6 +237,50 @@ function render2() {
             continue;
         }
     }
+}
+var help = 5;
+function resta() {
+    for (var i = 0; i < hierbas.length; i++) {
+        var difX = hierbas[i].position.x - players[0].position.x;
+        var difZ = hierbas[i].position.z - players[0].position.z;
+        if (difX < 0) {
+            hierbas[i].position.x += help * deltaTime;
+        }
+        else {
+            hierbas[i].position.x += -help * deltaTime;
+        }
+
+        if (difZ < 0) {
+            hierbas[i].position.z += help * deltaTime;
+        }
+        else {
+            hierbas[i].position.z += -help * deltaTime;
+        }
+        console.log(difX + " " + difZ);
+    }
+
+    
+    for (var i = 0; i < players[0].rayos.length; i++) {
+
+        var rayo = players[0].rayos[i];
+        RCaster.set(players[0].position, rayo);
+
+        var colisiones = RCaster.intersectObjects(hierbas, true);
+
+
+        if (colisiones.length > 0 && colisiones[0].distance < 500) {
+            players[0].encontrados = players[0].encontrados - 10;
+
+        }
+
+    }
+}
+function render2() {
+    requestAnimationFrame(render2);
+    deltaTime = clock.getDelta();
+    tablaDatos();
+    suma();
+    resta();
 
     /***********************************************************************/
     /***********************************************************************/
@@ -251,6 +293,7 @@ function render2() {
         if (players[0].escena == 1) {
             escena01_2();
             var hierba01 = Obj_Esp01.clone();
+            hierba01.name = "hierba01";
             hierba01.position.x = -20;
             hierba01.position.z = 20;
             hierbas.push(hierba01);
@@ -258,18 +301,38 @@ function render2() {
         }
         else if (players[0].escena == 2) {
             escena02_2();
-            var hierba02 = Obj_Esp01.clone();
-            hierba02.position.x = -20;
-            hierba02.position.z = -20;
-            hierbas.push(hierba02);
-            scene.add(hierba02);
+
+            if (dificultad == true) {
+                var hierba01 = scene.getObjectByName("hierba01");
+                hierba01.position.x = -20;
+                hierba01.position.z = 20;
+
+                var hierba02 = Obj_Esp01.clone();
+                hierba02.name = "hierba02";
+                hierba02.position.x = 20;
+                hierba02.position.z = 20;
+                hierbas.push(hierba02);
+                scene.add(hierba02);
+            }
         }
         else if (players[0].escena == 3) {
             escena03_2();
-            var hierba03 = Obj_Esp01.clone();
-            hierba03.position.z = 40;
-            hierbas.push(hierba03);
-            scene.add(hierba03);
+
+            if (dificultad == true) {
+                var hierba01 = scene.getObjectByName("hierba01");
+                hierba01.position.x = -20;
+                hierba01.position.z = 20;
+                var hierba02 = scene.getObjectByName("hierba02");
+                hierba02.position.x = 20;
+                hierba02.position.z = 20;
+
+                var hierba03 = Obj_Esp01.clone();
+                hierba03.name = "hierba02";
+                hierba03.position.z = -40;
+                hierbas.push(hierba03);
+                scene.add(hierba03);
+            }
+           
         }
         else if (players[0].escena == 4) {
             escena04_2();

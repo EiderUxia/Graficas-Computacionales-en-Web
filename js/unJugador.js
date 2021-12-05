@@ -302,7 +302,7 @@ function render2() {
         }
         else if (players[0].escena == 2) {
             escena02_2();
-            totalTime = 0;
+            totalTime = -100;
 
             if (dificultad == true) {
                 var hierba01 = scene.getObjectByName("hierba01");
@@ -319,7 +319,7 @@ function render2() {
         }
         else if (players[0].escena == 3) {
             escena03_2();
-            totalTime = 0;
+            totalTime = -200;
 
             if (dificultad == true) {
                 var hierba01 = scene.getObjectByName("hierba01");

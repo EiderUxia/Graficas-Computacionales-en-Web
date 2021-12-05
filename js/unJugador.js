@@ -256,7 +256,6 @@ function resta() {
         else {
             hierbas[i].position.z += -help * deltaTime;
         }
-        console.log(difX + " " + difZ);
     }
 
 
@@ -280,7 +279,7 @@ function render2() {
     deltaTime = clock.getDelta();
     tablaDatos();
     suma();
-    if (totalTime > 100) {
+    if (totalTime > 200) {
         resta();
     }
 
@@ -303,6 +302,7 @@ function render2() {
         }
         else if (players[0].escena == 2) {
             escena02_2();
+            totalTime = 0;
 
             if (dificultad == true) {
                 var hierba01 = scene.getObjectByName("hierba01");
@@ -319,6 +319,7 @@ function render2() {
         }
         else if (players[0].escena == 3) {
             escena03_2();
+            totalTime = 0;
 
             if (dificultad == true) {
                 var hierba01 = scene.getObjectByName("hierba01");

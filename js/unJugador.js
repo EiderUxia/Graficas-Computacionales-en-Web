@@ -174,31 +174,13 @@ function render2() {
         var pera = Obj_Esp02.clone();
         pera.position.x = x;
         pera.position.z = z;
+        pera.activo = true;
         setTimeout(() => {
+            pera.activo = false;
             scene.remove(pera);
         }, 5000);
         peras.push(pera);
         scene.add(pera);
-    }
-
-    for (var i = 0; i < players[0].rayos.length; i++) {
-
-        var rayo = players[0].rayos[i];
-
-        //1er parametro desde que punto va a ser lanzado el rayo o vector
-        //2do parametro es el rayo o vector
-        RCaster.set(players[0].position, rayo);
-
-        //Detectar la colision de 1 objeto que se pone dentro de ()
-        //true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
-        var colisiones = RCaster.intersectObjects(peras, true);
-
-
-        if (colisiones.length > 0 && colisiones[0].distance < 500) {
-            players[0].encontrados = players[0].encontrados + 3;
-            colisiones[0].object.visible = false;
-        }
-
     }
 
     if (totalTime % 300 == 0) {
@@ -206,7 +188,9 @@ function render2() {
         var GP = GatoPan.clone();
         GP.position.x = x;
         GP.position.z = z;
+        GP.activo = true;
         setTimeout(() => {
+            GP.activo = false;
             scene.remove(GP);
         }, 5000);
         jugetes.push(GP);
@@ -216,21 +200,44 @@ function render2() {
     for (var i = 0; i < players[0].rayos.length; i++) {
 
         var rayo = players[0].rayos[i];
-
-        //1er parametro desde que punto va a ser lanzado el rayo o vector
-        //2do parametro es el rayo o vector
         RCaster.set(players[0].position, rayo);
 
-        //Detectar la colision de 1 objeto que se pone dentro de ()
-        //true es para decir que tambien quieres saber si colisionó con los hijos de estos objetos
-        var colisiones = RCaster.intersectObjects(jugetes, true);
+        var colisiones = RCaster.intersectObjects(peras, true);
+        var colisiones2 = RCaster.intersectObjects(jugetes, true);
 
 
         if (colisiones.length > 0 && colisiones[0].distance < 500) {
-            players[0].encontrados = players[0].encontrados + 5;
+            players[0].encontrados = players[0].encontrados + 3;
+            colisiones[0].object.parent.activo = false;
             colisiones[0].object.visible = false;
+            scene.remove(colisiones[0].object);
+
         }
 
+        if (colisiones2.length > 0 && colisiones2[0].distance < 500) {
+            players[0].encontrados = players[0].encontrados + 5;
+            colisiones2[0].object.parent.activo = false;
+            colisiones[0].object.visible = false;
+            scene.remove(colisiones2[0].object);
+
+        }
+
+    }
+
+    for (var i = 0; i < peras.length; i++) {
+        if (peras[i] === undefined) continue;
+        if (peras[i].activo == false) {
+            peras.splice(i, 1);
+            continue;
+        }
+    }
+
+    for (var i = 0; i < jugetes.length; i++) {
+        if (jugetes[i] === undefined) continue;
+        if (jugetes[i].activo == false) {
+            jugetes.splice(i, 1);
+            continue;
+        }
     }
 
     /***********************************************************************/
@@ -243,12 +250,26 @@ function render2() {
         v5 == true && v6 == true && v7 == true && v8 == true && v9 == true) {
         if (players[0].escena == 1) {
             escena01_2();
+            var hierba01 = Obj_Esp01.clone();
+            hierba01.position.x = -20;
+            hierba01.position.z = 20;
+            hierbas.push(hierba01);
+            scene.add(hierba01);
         }
         else if (players[0].escena == 2) {
             escena02_2();
+            var hierba02 = Obj_Esp01.clone();
+            hierba02.position.x = -20;
+            hierba02.position.z = -20;
+            hierbas.push(hierba02);
+            scene.add(hierba02);
         }
         else if (players[0].escena == 3) {
             escena03_2();
+            var hierba03 = Obj_Esp01.clone();
+            hierba03.position.z = 40;
+            hierbas.push(hierba03);
+            scene.add(hierba03);
         }
         else if (players[0].escena == 4) {
             escena04_2();

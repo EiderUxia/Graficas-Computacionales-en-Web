@@ -45,6 +45,7 @@ var objetosConColision = [];
 var objetosConColision2 = [];
 var peras = [];
 var jugetes = [];
+var hierbas = [];
 /***********************************************************************/
 /***********************************************************************/
 //Escenarios

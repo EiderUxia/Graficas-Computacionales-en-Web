@@ -41,6 +41,9 @@ function setupScene2() {
         new THREE.Vector3(0, -1, 0),
     ];
 
+    player1.rayos[0].AunColision = false;
+    player1.rayos[1].AunColision = false;
+
     scene.add(player1);
 
     players.push(player1);
@@ -258,19 +261,26 @@ function resta() {
         }
     }
 
-
     for (var i = 0; i < players[0].rayos.length; i++) {
 
         var rayo = players[0].rayos[i];
         RCaster.set(players[0].position, rayo);
-
         var colisiones = RCaster.intersectObjects(hierbas, true);
 
 
         if (colisiones.length > 0 && colisiones[0].distance < 500) {
-            players[0].encontrados = players[0].encontrados - 10;
-
+            if (players[0].rayos[i].AunColision == false) {
+                /*console.log("Dentro de if");*/
+                players[0].encontrados = players[0].encontrados - 10;
+                players[0].rayos[i].AunColision = true;
+            }
         }
+        else {
+            /*console.log("Dentro de else");*/
+            players[0].rayos[i].AunColision = false;
+        }
+
+
 
     }
 }

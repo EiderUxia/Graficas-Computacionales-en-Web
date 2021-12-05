@@ -284,11 +284,96 @@ function resta() {
 
     }
 }
+
+var auxX;
+var listo1 = false;
+var listo2 = false;
+function hierbasColision() {
+
+    if (players[0].escena == 2 && listo1 == true) {
+        auxX = hierbas[0].position.x - hierbas[1].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if(auxX < 0){
+                hierbas[0].position.x += 1;
+                hierbas[1].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            else{
+                hierbas[0].position.x -= 1;
+                hierbas[1].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            
+        }
+    }
+    else if (players[0].escena == 3 && listo2 == true) {
+        auxX = hierbas[0].position.x - hierbas[1].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if(auxX < 0){
+                hierbas[0].position.x += 1;
+                hierbas[1].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            else{
+                hierbas[0].position.x -= 1;
+                hierbas[1].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            
+        }
+
+        auxX = hierbas[1].position.x - hierbas[2].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if(auxX < 0){
+                hierbas[1].position.x += 1;
+                hierbas[2].position.x += 1;
+                console.log(hierbas[1].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            else{
+                hierbas[1].position.x -= 1;
+                hierbas[2].position.x -= 1;
+                console.log(hierbas[1].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            
+        }
+
+        auxX = hierbas[0].position.x - hierbas[2].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if(auxX < 0){
+                hierbas[0].position.x += 1;
+                hierbas[2].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            else{
+                hierbas[0].position.x -= 1;
+                hierbas[2].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            
+        }
+    }
+
+}
 function render2() {
     requestAnimationFrame(render2);
     deltaTime = clock.getDelta();
     tablaDatos();
     suma();
+    if (dificultad == true) {
+        hierbasColision();
+    }
     if (totalTime > 200) {
         resta();
     }
@@ -325,6 +410,7 @@ function render2() {
                 hierba02.position.z = 20;
                 hierbas.push(hierba02);
                 scene.add(hierba02);
+                listo1 = true;
             }
         }
         else if (players[0].escena == 3) {
@@ -344,6 +430,8 @@ function render2() {
                 hierba03.position.z = -40;
                 hierbas.push(hierba03);
                 scene.add(hierba03);
+                listo2 = true;
+
             }
 
         }

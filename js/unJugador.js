@@ -259,7 +259,7 @@ function resta() {
         console.log(difX + " " + difZ);
     }
 
-    
+
     for (var i = 0; i < players[0].rayos.length; i++) {
 
         var rayo = players[0].rayos[i];
@@ -280,7 +280,9 @@ function render2() {
     deltaTime = clock.getDelta();
     tablaDatos();
     suma();
-    resta();
+    if (totalTime > 100) {
+        resta();
+    }
 
     /***********************************************************************/
     /***********************************************************************/
@@ -332,7 +334,7 @@ function render2() {
                 hierbas.push(hierba03);
                 scene.add(hierba03);
             }
-           
+
         }
         else if (players[0].escena == 4) {
             escena04_2();

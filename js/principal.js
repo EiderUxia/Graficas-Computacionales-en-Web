@@ -134,6 +134,7 @@ $(document).ready(function () {
                         modal1.style.visibility = "visible";
                         modal1.style.opacity = 1;
                 }, 500);
+                pausa = true;
         });
 
         $("#configuracion").click(function () {
@@ -141,6 +142,7 @@ $(document).ready(function () {
                         modal1.style.visibility = "hidden";
                         modal1.style.opacity = 0;
                 }, 500);
+                pausa = false;
         });
 
         function UnJugador() {

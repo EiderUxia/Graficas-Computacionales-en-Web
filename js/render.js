@@ -27,65 +27,66 @@ function render() {
         btn2.innerHTML = fila2;
         document.getElementById("tablita").appendChild(btn);
         document.getElementById("tablita").appendChild(btn2);
-        /***********************************************************************/
-        /***********************************************************************/
-        //Cambio de escena
-        /***********************************************************************/
-        /***********************************************************************/
-        if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true &&v3 == true &&v4 == true &&
-                v5 == true &&v6 == true &&v7 == true &&v8 == true &&v9 == true ) {
-                if (players[1].escena == 1) {
-                        escena01();
-                }
-                else if (players[1].escena == 2) {
-                        escena02();
-                }
-                else if (players[1].escena == 3) {
-                        escena03();
-                }
-                else if (players[1].escena == 4) {
-                        escena04();
-                }
-        }
-        else if (escenario_en_curso == true && isWorldReady == true) {
-
-                if (players[1].escena == 1) {
-
-                        if (cantidasObP1 == 0 || cantidasObP2 == 0) {
-                                escenario_en_curso = false;
-                                players[0].escena = 2;
-                                players[1].escena = 2;
+        if (pausa == false) {
+                /***********************************************************************/
+                /***********************************************************************/
+                //Cambio de escena
+                /***********************************************************************/
+                /***********************************************************************/
+                if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true && v3 == true && v4 == true &&
+                        v5 == true && v6 == true && v7 == true && v8 == true && v9 == true) {
+                        if (players[1].escena == 1) {
+                                escena01();
+                        }
+                        else if (players[1].escena == 2) {
+                                escena02();
+                        }
+                        else if (players[1].escena == 3) {
+                                escena03();
+                        }
+                        else if (players[1].escena == 4) {
+                                escena04();
                         }
                 }
-                else if (players[1].escena == 2) {
-                        if (cantidasObP1 == 0 || cantidasObP2 == 0) {
-                                escenario_en_curso = false;
-                                players[0].escena = 3;
-                                players[1].escena = 3;
+                else if (escenario_en_curso == true && isWorldReady == true) {
+
+                        if (players[1].escena == 1) {
+
+                                if (cantidasObP1 == 0 || cantidasObP2 == 0) {
+                                        escenario_en_curso = false;
+                                        players[0].escena = 2;
+                                        players[1].escena = 2;
+                                }
+                        }
+                        else if (players[1].escena == 2) {
+                                if (cantidasObP1 == 0 || cantidasObP2 == 0) {
+                                        escenario_en_curso = false;
+                                        players[0].escena = 3;
+                                        players[1].escena = 3;
+                                }
+                        }
+                        else if (players[1].escena == 3) {
+                                if (cantidasObP1 == 0 || cantidasObP2 == 0) {
+                                        escenario_en_curso = false;
+                                        players[0].escena = 4;
+                                        players[1].escena = 4;
+                                }
                         }
                 }
-                else if (players[1].escena == 3) {
-                        if (cantidasObP1 == 0 || cantidasObP2 == 0) {
-                                escenario_en_curso = false;
-                                players[0].escena = 4;
-                                players[1].escena = 4;
-                        }
+                /***********************************************************************/
+                /***********************************************************************/
+                /***********************************************************************/
+                /***********************************************************************/
+                reiniciarVariables();
+
+                actualizarRenderer();
+
+                if (cargado == true) {
+                        teclas();
                 }
+
+                movimiento();
         }
-        /***********************************************************************/
-        /***********************************************************************/
-        /***********************************************************************/
-        /***********************************************************************/
-        reiniciarVariables();
-
-        actualizarRenderer();
-
-        if (cargado == true) {
-                teclas();
-        }
-
-        movimiento();
-
         renderers[0].render(scene, cameras[0]);
         renderers[1].render(scene2, cameras[1]);
 

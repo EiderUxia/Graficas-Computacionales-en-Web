@@ -52,6 +52,7 @@ var hierbas = [];
 /***********************************************************************/
 /***********************************************************************/
 var isWorldReady = false;
+var pausa = false;
 var escenario01;
 var escenario02;
 var escenario03;

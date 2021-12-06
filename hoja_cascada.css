@@ -178,7 +178,7 @@ body>iframe:first-child {
 	opacity: 0;
 	transition: .5s;
 	color: white;
-	font-size: 58px;
+	font-size: 48px;
 	animation: glow 3s ease-in-out infinite alternate;
 	-webkit-animation: glow 3s ease-in-out infinite alternate;
 	-moz-animation: glow 3s ease-in-out infinite alternate;

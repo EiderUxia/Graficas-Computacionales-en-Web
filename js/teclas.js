@@ -50,7 +50,7 @@ function teclas() {
             }
 
         }
-    } 
+    }
 
 
     //Player 2
@@ -93,6 +93,18 @@ function movimiento() {
     for (var i = 0; i < players.length; i++) {
         players[i].position.x += players[i].yaw * deltaTime;
         players[i].position.z += players[i].forward * deltaTime;
+        if (players[i].position.x > 50) {
+            players[i].position.x = 50;
+        }
+        else if (players[i].position.x < -50) {
+            players[i].position.x = -50;
+        }
+        else if (players[i].position.z > 50) {
+            players[i].position.z = 50;
+        }
+        else if (players[i].position.z < -50) {
+            players[i].position.z = -50;
+        }
     }
 
 }

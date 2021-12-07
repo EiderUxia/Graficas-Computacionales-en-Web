@@ -307,76 +307,28 @@ function hierbasColision() {
 
     if (players[0].escena == 2 && listo1 == true) {
         auxX = hierbas[0].position.x - hierbas[1].position.x;
-        /*console.log("X: " + auxX);*/
         if (auxX > -3 && auxX < 3) {
-            if (auxX < 0) {
-                hierbas[0].position.x += 1;
-                hierbas[1].position.x += 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[1].position.x);
-            }
-            else {
-                hierbas[0].position.x -= 1;
-                hierbas[1].position.x -= 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[1].position.x);
-            }
-
+            hierbas[0].position.x += 2;
+            hierbas[1].position.x -= 2;
         }
     }
     else if (players[0].escena == 3 && listo2 == true) {
         auxX = hierbas[0].position.x - hierbas[1].position.x;
-        /*console.log("X: " + auxX);*/
         if (auxX > -3 && auxX < 3) {
-            if (auxX < 0) {
-                hierbas[0].position.x += 1;
-                hierbas[1].position.x += 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[1].position.x);
-            }
-            else {
-                hierbas[0].position.x -= 1;
-                hierbas[1].position.x -= 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[1].position.x);
-            }
-
+            hierbas[0].position.x += 2;
+            hierbas[1].position.x -= 2;
         }
 
         auxX = hierbas[1].position.x - hierbas[2].position.x;
-        /*console.log("X: " + auxX);*/
         if (auxX > -3 && auxX < 3) {
-            if (auxX < 0) {
-                hierbas[1].position.x += 1;
-                hierbas[2].position.x += 1;
-                console.log(hierbas[1].position.x);
-                console.log(hierbas[2].position.x);
-            }
-            else {
-                hierbas[1].position.x -= 1;
-                hierbas[2].position.x -= 1;
-                console.log(hierbas[1].position.x);
-                console.log(hierbas[2].position.x);
-            }
-
+            hierbas[0].position.x += 2;
+            hierbas[1].position.x -= 2;
         }
 
         auxX = hierbas[0].position.x - hierbas[2].position.x;
-        /*console.log("X: " + auxX);*/
         if (auxX > -3 && auxX < 3) {
-            if (auxX < 0) {
-                hierbas[0].position.x += 1;
-                hierbas[2].position.x += 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[2].position.x);
-            }
-            else {
-                hierbas[0].position.x -= 1;
-                hierbas[2].position.x -= 1;
-                console.log(hierbas[0].position.x);
-                console.log(hierbas[2].position.x);
-            }
-
+            hierbas[0].position.x += 2;
+            hierbas[1].position.x -= 2;
         }
     }
 

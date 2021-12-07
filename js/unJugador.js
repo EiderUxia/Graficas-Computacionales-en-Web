@@ -188,31 +188,35 @@ function suma() {
     /***********************************************************************/
     totalTime += 1;
     if (totalTime % 100 == 0) {
-        Position();
-        var pera = Obj_Esp02.clone();
-        pera.position.x = x;
-        pera.position.z = z;
-        pera.activo = true;
-        setTimeout(() => {
-            pera.activo = false;
-            scene.remove(pera);
-        }, 5000);
-        peras.push(pera);
-        scene.add(pera);
+        if (pausa == false) {
+            Position();
+            var pera = Obj_Esp02.clone();
+            pera.position.x = x;
+            pera.position.z = z;
+            pera.activo = true;
+            setTimeout(() => {
+                pera.activo = false;
+                scene.remove(pera);
+            }, 5000);
+            peras.push(pera);
+            scene.add(pera);
+        }
     }
 
     if (totalTime % 300 == 0) {
-        Position();
-        var GP = GatoPan.clone();
-        GP.position.x = x;
-        GP.position.z = z;
-        GP.activo = true;
-        setTimeout(() => {
-            GP.activo = false;
-            scene.remove(GP);
-        }, 5000);
-        jugetes.push(GP);
-        scene.add(GP);
+        if (pausa == false) {
+            Position();
+            var GP = GatoPan.clone();
+            GP.position.x = x;
+            GP.position.z = z;
+            GP.activo = true;
+            setTimeout(() => {
+                GP.activo = false;
+                scene.remove(GP);
+            }, 5000);
+            jugetes.push(GP);
+            scene.add(GP);
+        }
     }
 
     for (var i = 0; i < players[0].rayos.length; i++) {

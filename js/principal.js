@@ -10,6 +10,7 @@ $(document).ready(function () {
         var Sonido = document.getElementById("Sonido");
         let modal1 = document.getElementById("modal-1");
         cargado = false;
+        pausa = false;
         RCaster = new THREE.Raycaster();
         /*
                 Bienvenido.style.visibility = "visible";

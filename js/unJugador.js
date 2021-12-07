@@ -162,6 +162,23 @@ function Position() {
         z = z - 50;
     }
     z = z * sig2;
+
+    if (x > players[0].position.x - 5 && x < players[0].position.x + 5 &&
+        z > players[0].position.z - 5 && z < players[0].position.z + 5) {
+        x = x * -1;
+        z = z * -1;
+
+        if (x > -5 && x < 5)
+            x + 10;
+        if (z > -5 && z < 5)
+            z + 10;
+        if (x == 0)
+            x + 10;
+        if (z == 0)
+            z + 10;
+        console.log("Entró");
+    }
+
 }
 function suma() {
     /***********************************************************************/
@@ -212,7 +229,6 @@ function suma() {
             colisiones[0].object.parent.activo = false;
             colisiones[0].object.visible = false;
             scene.remove(colisiones[0].object);
-
         }
 
         if (colisiones2.length > 0 && colisiones2[0].distance < 500) {
@@ -220,7 +236,6 @@ function suma() {
             colisiones2[0].object.parent.activo = false;
             colisiones2[0].object.visible = false;
             scene.remove(colisiones2[0].object);
-
         }
 
     }
@@ -480,7 +495,7 @@ function render2() {
 
     }
     else
-    console.log("Pause == true")
+        console.log("Pause == true")
     renderers[0].render(scene, cameras[0]);
 
 

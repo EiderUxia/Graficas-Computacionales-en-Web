@@ -24,7 +24,7 @@ function setupScene2() {
 
     var grid = new THREE.GridHelper(50, 10, 0xffffff, 0xffffff);
     grid.position.y = -1;
-    scene.add(grid);
+    //scene.add(grid);
 
     var material = new THREE.MeshLambertMaterial({
         color: new THREE.Color(0.5, 0.0, 0.0),
@@ -40,6 +40,9 @@ function setupScene2() {
         new THREE.Vector3(0, 1, 0),
         new THREE.Vector3(0, -1, 0),
     ];
+
+    player1.rayos[0].AunColision = false;
+    player1.rayos[1].AunColision = false;
 
     scene.add(player1);
 
@@ -256,125 +259,228 @@ function resta() {
         else {
             hierbas[i].position.z += -help * deltaTime;
         }
-        console.log(difX + " " + difZ);
     }
 
-    
     for (var i = 0; i < players[0].rayos.length; i++) {
 
         var rayo = players[0].rayos[i];
         RCaster.set(players[0].position, rayo);
-
         var colisiones = RCaster.intersectObjects(hierbas, true);
 
 
         if (colisiones.length > 0 && colisiones[0].distance < 500) {
-            players[0].encontrados = players[0].encontrados - 10;
+            if (players[0].rayos[i].AunColision == false) {
+                /*console.log("Dentro de if");*/
+                players[0].encontrados = players[0].encontrados - 10;
+                players[0].rayos[i].AunColision = true;
+            }
+        }
+        else {
+            /*console.log("Dentro de else");*/
+            players[0].rayos[i].AunColision = false;
+        }
+
+
+
+    }
+}
+
+var auxX;
+var listo1 = false;
+var listo2 = false;
+function hierbasColision() {
+
+    if (players[0].escena == 2 && listo1 == true) {
+        auxX = hierbas[0].position.x - hierbas[1].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if (auxX < 0) {
+                hierbas[0].position.x += 1;
+                hierbas[1].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            else {
+                hierbas[0].position.x -= 1;
+                hierbas[1].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+
+        }
+    }
+    else if (players[0].escena == 3 && listo2 == true) {
+        auxX = hierbas[0].position.x - hierbas[1].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if (auxX < 0) {
+                hierbas[0].position.x += 1;
+                hierbas[1].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
+            else {
+                hierbas[0].position.x -= 1;
+                hierbas[1].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[1].position.x);
+            }
 
         }
 
+        auxX = hierbas[1].position.x - hierbas[2].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if (auxX < 0) {
+                hierbas[1].position.x += 1;
+                hierbas[2].position.x += 1;
+                console.log(hierbas[1].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            else {
+                hierbas[1].position.x -= 1;
+                hierbas[2].position.x -= 1;
+                console.log(hierbas[1].position.x);
+                console.log(hierbas[2].position.x);
+            }
+
+        }
+
+        auxX = hierbas[0].position.x - hierbas[2].position.x;
+        /*console.log("X: " + auxX);*/
+        if (auxX > -3 && auxX < 3) {
+            if (auxX < 0) {
+                hierbas[0].position.x += 1;
+                hierbas[2].position.x += 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[2].position.x);
+            }
+            else {
+                hierbas[0].position.x -= 1;
+                hierbas[2].position.x -= 1;
+                console.log(hierbas[0].position.x);
+                console.log(hierbas[2].position.x);
+            }
+
+        }
     }
+
 }
 function render2() {
     requestAnimationFrame(render2);
     deltaTime = clock.getDelta();
     tablaDatos();
-    suma();
-    resta();
+    if (pausa == false) {
 
-    /***********************************************************************/
-    /***********************************************************************/
-    //Cambio de escena
-    /***********************************************************************/
-    /***********************************************************************/
 
-    if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true && v3 == true && v4 == true &&
-        v5 == true && v6 == true && v7 == true && v8 == true && v9 == true) {
-        if (players[0].escena == 1) {
-            escena01_2();
-            var hierba01 = Obj_Esp01.clone();
-            hierba01.name = "hierba01";
-            hierba01.position.x = -20;
-            hierba01.position.z = 20;
-            hierbas.push(hierba01);
-            scene.add(hierba01);
+        suma();
+        if (dificultad == true) {
+            hierbasColision();
         }
-        else if (players[0].escena == 2) {
-            escena02_2(); 
+        if (totalTime > 200) {
+            resta();
+        }
 
-            if (dificultad == true) {
-                var hierba01 = scene.getObjectByName("hierba01");
+        /***********************************************************************/
+        /***********************************************************************/
+        //Cambio de escena
+        /***********************************************************************/
+        /***********************************************************************/
+
+        if (escenario_en_curso == false && isWorldReady == true && v1 == true && v2 == true && v3 == true && v4 == true &&
+            v5 == true && v6 == true && v7 == true && v8 == true && v9 == true) {
+            if (players[0].escena == 1) {
+                escena01_2();
+                var hierba01 = Obj_Esp01.clone();
+                hierba01.name = "hierba01";
                 hierba01.position.x = -20;
                 hierba01.position.z = 20;
+                hierbas.push(hierba01);
+                scene.add(hierba01);
+            }
+            else if (players[0].escena == 2) {
+                escena02_2();
+                totalTime = -100;
 
-                var hierba02 = Obj_Esp01.clone();
-                hierba02.name = "hierba02";
-                hierba02.position.x = 20;
-                hierba02.position.z = 20;
-                hierbas.push(hierba02);
-                scene.add(hierba02);
+                if (dificultad == true) {
+                    var hierba01 = scene.getObjectByName("hierba01");
+                    hierba01.position.x = -20;
+                    hierba01.position.z = 20;
+
+                    var hierba02 = Obj_Esp01.clone();
+                    hierba02.name = "hierba02";
+                    hierba02.position.x = 20;
+                    hierba02.position.z = 20;
+                    hierbas.push(hierba02);
+                    scene.add(hierba02);
+                    listo1 = true;
+                }
+            }
+            else if (players[0].escena == 3) {
+                escena03_2();
+                totalTime = -200;
+
+                if (dificultad == true) {
+                    var hierba01 = scene.getObjectByName("hierba01");
+                    hierba01.position.x = -20;
+                    hierba01.position.z = 20;
+                    var hierba02 = scene.getObjectByName("hierba02");
+                    hierba02.position.x = 20;
+                    hierba02.position.z = 20;
+
+                    var hierba03 = Obj_Esp01.clone();
+                    hierba03.name = "hierba02";
+                    hierba03.position.z = -40;
+                    hierbas.push(hierba03);
+                    scene.add(hierba03);
+                    listo2 = true;
+
+                }
+
+            }
+            else if (players[0].escena == 4) {
+                escena04_2();
             }
         }
-        else if (players[0].escena == 3) {
-            escena03_2();
+        else if (escenario_en_curso == true && isWorldReady == true) {
 
-            if (dificultad == true) {
-                var hierba01 = scene.getObjectByName("hierba01");
-                hierba01.position.x = -20;
-                hierba01.position.z = 20;
-                var hierba02 = scene.getObjectByName("hierba02");
-                hierba02.position.x = 20;
-                hierba02.position.z = 20;
+            if (players[0].escena == 1) {
 
-                var hierba03 = Obj_Esp01.clone();
-                hierba03.name = "hierba02";
-                hierba03.position.z = -40;
-                hierbas.push(hierba03);
-                scene.add(hierba03);
+                if (cantidasObP1 == 0) {
+                    escenario_en_curso = false;
+                    players[0].escena = 2;
+                }
             }
-           
+            else if (players[0].escena == 2) {
+                if (cantidasObP1 == 0) {
+                    escenario_en_curso = false;
+                    players[0].escena = 3;
+                }
+            }
+            else if (players[0].escena == 3) {
+                if (cantidasObP1 == 0) {
+                    escenario_en_curso = false;
+                    players[0].escena = 4;
+                }
+            }
         }
-        else if (players[0].escena == 4) {
-            escena04_2();
+        /***********************************************************************/
+        /***********************************************************************/
+        /***********************************************************************/
+        /***********************************************************************/
+        reiniciarVariables();
+
+        actualizarRenderer2();
+
+        if (cargado == true) {
+            teclas2();
         }
+
+        movimiento();
+
     }
-    else if (escenario_en_curso == true && isWorldReady == true) {
-
-        if (players[0].escena == 1) {
-
-            if (cantidasObP1 == 0) {
-                escenario_en_curso = false;
-                players[0].escena = 2;
-            }
-        }
-        else if (players[0].escena == 2) {
-            if (cantidasObP1 == 0) {
-                escenario_en_curso = false;
-                players[0].escena = 3;
-            }
-        }
-        else if (players[0].escena == 3) {
-            if (cantidasObP1 == 0) {
-                escenario_en_curso = false;
-                players[0].escena = 4;
-            }
-        }
-    }
-    /***********************************************************************/
-    /***********************************************************************/
-    /***********************************************************************/
-    /***********************************************************************/
-    reiniciarVariables();
-
-    actualizarRenderer2();
-
-    if (cargado == true) {
-        teclas2();
-    }
-
-    movimiento();
-
-
+    else
+    console.log("Pause == true")
     renderers[0].render(scene, cameras[0]);
 
 

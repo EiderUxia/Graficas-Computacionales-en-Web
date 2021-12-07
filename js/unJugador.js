@@ -787,7 +787,7 @@ function escena04_2() {
     var Contenedor = document.getElementById("contenedor");
     var Ganador = document.getElementById("Ganador");
     var Cargando = document.getElementById("Cargando");
-    $("#Felicidades").text("Felicidades " + players[0].name + " por terminar el juego con " + players[0].encontrados + " puntos");
+    $("#Felicidades").text("Jugador " + players[0].name + " terminaste el juego con " + players[0].encontrados + " puntos");
 
     setTimeout(function () {
         Contenedor.style.visibility = "visible";

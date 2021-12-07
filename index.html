@@ -27,7 +27,8 @@
 	<script type="text/javascript" src="js/loaders/MTLLoader.js"></script>
 	<script type="text/javascript" src="js/loaders/OBJLoader.js"></script>
  	<script type="text/javascript" src="js/loaders/FBXLoader.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.js"></script>
 	<!--- .js: --->
 	<script type="text/javascript" src="./js/principal.js"></script>
 	<script type="text/javascript" src="./js/variables.js"></script>
@@ -37,33 +38,18 @@
 	<script type="text/javascript" src="./js/escenas.js"></script>
 	<script type="text/javascript" src="./js/unJugador.js"></script>
 	<script type="text/javascript" src="./database/models/model_puntuaciones.js"></script>
-
+<script type="text/javascript" src="./js/mifacebook.js"></script>
 
 	<!---   Boostrap:    --->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<!---   iniciar sesion en fb  --->
+<!---   iniciar share en fb  --->
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+function shareFB() {
+        var score = $("#Felicidades").val();
+        shareScore(score);
+    }
 </script>
 <!---bongocat--->
 <script>
@@ -90,6 +76,17 @@ function openCity(cityName) {
 }
 </script>
 
+<!---puntuaciones-->
+<script>
+$(document).ready(function(){
+$(".faq-answer").hide();
+$(".faq-question").click(function(){
+$(this).next(".faq-answer").slideToggle('fast');
+});
+});
+</script>
+<!-------->
+
 <script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
 <link href="//fonts.googleapis.com/css?family=Public+Sans|Karla" rel="stylesheet">
 
@@ -102,6 +99,7 @@ function openCity(cityName) {
 </head>
 
 <body>
+
 
 
 	<div id="glentab01">
@@ -148,25 +146,24 @@ function openCity(cityName) {
 		<!-- Navbar links -->
 		<div class="navbar">
 			<button class="tablinks">
-				<p><a href="/">inicio</a></p>
+			<p><a href="/">Inicio</a></p>
 			</button>
 			<button class="tablinks" onclick="openCity(event, 'Leaderboard')">
 				<span class="emoji">🏆</span>
-				<a href="/ListaPuntos.html">puntajes</a>
+				<p>puntajes</p>
 			</button>
 
-			<button class="tablinks" onclick="openCity('instructivo')">
+			<button class="tablinks" onclick="openCity(event, 'Leaderboard')">
 				<span class="emoji">🕹️</span>
-
+<p>como jugar</p></button>
 				<div id="instructivo" class="tablinks" style="display:none">
-					<h2>Como jugar</h2>
+				
   <p></p>
 </div>
 			</button>
-			<button class="tablinks" onclick="shareFB();"><span class="emoji">⭐</span><a href="">compartir puntuacion</a><span
-					class="number"></span></button>
+			<button class="tablinks" onclick="shareFB();"><span class="emoji">🥔</span><a href="">compartir puntuacion</a><span><class="number"></span></button>
 			
-			<button class="tablinks" id="quit"><a href="/">salir</a></button>
+			
 		</div>
 
 		<!-- Navbar content -->
@@ -179,7 +176,7 @@ function openCity(cityName) {
 		<div id="Leaderboard" class="tabcontent">
 			<table>
 				<tr>
-
+          a
 				</tr>
 			</table>
 		</div>
@@ -193,6 +190,338 @@ function openCity(cityName) {
 				<p>☃☃☃☃☃☃☃☃☃☃☃☃☃</p>
 			</div>
 		</div>
+<!--particulas hechas de manera bien puerk, no me chemsifiquen-->
+<div class="container"><img class="background" src="https://i.imgur.com/lk7cwje.png"/>
+ 
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+  <div class="circle-container">
+    <div class="circle"></div>
+  </div>
+</div>
+<!---->
 
 		<div id="Bienvenido">
 			<p class="neon">Bienvenido</p>

@@ -20,7 +20,7 @@ function shareScore(score) {
   FB.ui({
   method: 'share',
   href: 'https://busquedamiaucable.000webhostapp.com/',
-  hashtag: "#tengosueñoaiuda",
+  hashtag: "#paraelGOTY",
   quote: "Mi puntuacion: " + score,
 }, function(response){});
 }

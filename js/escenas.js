@@ -516,9 +516,9 @@ function escena04() {
         $("#Felicidades").text("Felicidades " + players[0].name + " y " + players[1].name + " por empatar el juego");
     }
     else if (players[0].encontrados > players[1].encontrados) {
-        $("#Felicidades").text("Felicidades " + players[0].name + " por ganar el juego");
+        $("#Felicidades").text("Felicidades " + players[0].name + " por ganar el juego con:" + players[0].encontrados + " objetos");
     } else {
-        $("#Felicidades").text("Felicidades " + players[1].name + " por ganar el juego");
+        $("#Felicidades").text("Felicidades " + players[1].name + " por ganar el juego con:" + players[1].encontrados + " objetos");
 
     }
 

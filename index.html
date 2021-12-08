@@ -47,7 +47,7 @@
 <!---   iniciar share en fb  --->
 <script>
 function shareFB() {
-        var score = $("#Felicidades").val();
+        var score = $("#ctmlmad").text();
         shareScore(score);
     }
 </script>
@@ -75,6 +75,7 @@ function openCity(cityName) {
   document.getElementById(cityName).style.display = "block";  
 }
 </script>
+
 
 <!---puntuaciones-->
 <script>
@@ -150,18 +151,18 @@ $(this).next(".faq-answer").slideToggle('fast');
 			</button>
 			<button class="tablinks" onclick="openCity(event, 'Leaderboard')">
 				<span class="emoji">🏆</span>
-				<p>puntajes</p>
+				<p><a href="https://busquedamiaucable.000webhostapp.com/ListaPuntos.html">puntajes</a></p>
 			</button>
 
-			<button class="tablinks" onclick="openCity(event, 'Leaderboard')">
+			<button class="tablinks">
 				<span class="emoji">🕹️</span>
-<p>como jugar</p></button>
+<p><a href="./how.html">como jugar</p></button>
 				<div id="instructivo" class="tablinks" style="display:none">
 				
   <p></p>
 </div>
 			</button>
-			<button class="tablinks" onclick="shareFB();"><span class="emoji">🥔</span><a href="">compartir puntuacion</a><span><class="number"></span></button>
+			<button class="tablinks" onclick="shareFB();"><span class="emoji">🥔</span><a href="" title="no usar antes de acabar el juego">compartir puntuacion</a><span><class="number"></span></button>
 			
 			
 		</div>
@@ -174,11 +175,7 @@ $(this).next(".faq-answer").slideToggle('fast');
 		</div>
 
 		<div id="Leaderboard" class="tabcontent">
-			<table>
-				<tr>
-          a
-				</tr>
-			</table>
+			     
 		</div>
 
 		<div id="Jugadores">
@@ -597,6 +594,8 @@ $(this).next(".faq-answer").slideToggle('fast');
 		<div id="Ganador">
 			<label id="Felicidades" class="neon"></label>
 			<!---<img src="https://i.imgur.com/iuKPR8p.gif"></img>--->
+
+      <label id="ctmlmad" class="neon"></label>
 		</div>
 
 	</div>
@@ -613,7 +612,7 @@ $(this).next(".faq-answer").slideToggle('fast');
 				<thead>
 					<tr>
 						<th class="titulo" scope="col">Nombres</th>
-						<th class="titulo" scope="col">Encontrados</th>
+						<th class="titulo" scope="col">Puntaje</th>
 						<th class="titulo" scope="col">Escena</th>
 					</tr>
 				</thead>

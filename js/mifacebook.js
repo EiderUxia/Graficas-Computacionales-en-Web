@@ -19,7 +19,7 @@ window.fbAsyncInit = function() {
 function shareScore(score) {
   FB.ui({
   method: 'share',
-  href: 'https://chrome.com/',
+  href: 'https://busquedamiaucable.000webhostapp.com/',
   hashtag: "#tengosueñoaiuda",
   quote: "Mi puntuacion: " + score,
 }, function(response){});
